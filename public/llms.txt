@@ -1,0 +1,137 @@
+# Muhammad Adeel — AI Engineer & Certified Agent Architect
+
+> Muhammad Adeel builds agentic AI, Context-Aware RAG systems, workflow automation, and deep learning pipelines that ship to production for founders and engineering teams worldwide. Based in Lahore, Pakistan.
+
+- Email: mailto:hello@adeelsi.me
+- GitHub: https://github.com/adeeljames
+- LinkedIn: https://www.linkedin.com/in/muhammadadeelai/
+- Medium: https://muhammadadeelai.medium.com
+- n8n Creator Profile: https://n8n.io/creators/aiadeel/
+- Handle: @muhammadadeelai
+
+---
+
+## 01 // SERVICES · WHAT I BUILD
+
+Custom AI systems built for ROI, not demos. 5 production systems engineered to eliminate manual bottlenecks and scale operations 24/7:
+
+1. **01 // AUTONOMOUS AGENTS — Autonomous AI Agents**
+   - Stack: LangGraph, CrewAI, MCP
+   - Summary: 24/7 agents for live web research, lead conversion, and WhatsApp voice & PDF booking.
+   - Proof: 70% token cut via MCP
+
+2. **02 // WORKFLOW ENGINES — End-to-End Automation**
+   - Stack: n8n Verified, Make, Zapier
+   - Summary: Production pipelines across email ops, CRM sync, meeting intelligence, and publishing.
+   - Proof: Zero-rejection n8n standard
+
+3. **03 // PRODUCTION RAG — Context-Aware RAG Systems**
+   - Stack: Qdrant, Pinecone, Docling
+   - Summary: Hybrid retrieval, neural reranking, and context-preserving ingestion over complex reports.
+   - Proof: Verbatim cited accuracy
+
+4. **04 // ML & DEEP LEARNING — Predictive ML, Vision & Audio AI**
+   - Stack: PyTorch, LightGBM, U-Net & MAML
+   - Summary: Custom classification, YAMNet audio AI, and medical vision with SHAP & Conformal bounds.
+   - Proof: Published on SSRN & Zenodo
+
+5. **05 // DASHBOARDS & CLOUD — Decision Dashboards & Cloud Serving**
+   - Stack: FastAPI, Power BI, PostgreSQL
+   - Summary: Executive BI dashboards paired with FastAPI microservices and cloud apps on Azure, Vertex & AWS.
+   - Proof: End-to-end cloud delivery
+
+---
+
+## 02 // SELECTED WORK (12 PRODUCTION AI PROJECTS)
+
+01. **24/7 WhatsApp Rental & Service Booking AI Agent**
+    - Highlight: Voice Notes + PDF Quote & Receipt
+    - Description: Handles voice notes, sends fleet photos, generates instant PDF quotes, and issues verified booking receipts 24/7.
+    - Stack: FastAPI, LangChain, WhatsApp API
+
+02. **SBP Monetary Policy — Context-Aware Financial RAG**
+    - Highlight: Docling + Qdrant + Cohere Rerank
+    - Description: Preserves complex central bank financial tables via Docling with hybrid Qdrant retrieval and verbatim inline citations.
+    - Stack: Docling, Qdrant, FastAPI
+
+03. **Claude External Memory MCP Server**
+    - Highlight: 70% Token Cost Reduction
+    - Description: Gives Claude persistent cross-session memory while cutting token consumption by 70% via selective context injection.
+    - Stack: MCP, Claude API, Python
+
+04. **Lahore Smog Watch — Live Air Quality AI Agent**
+    - Highlight: WAQI + NASA FIRMS + Open-Meteo
+    - Description: Fuses live station maps, 7-day forecasts, and NASA satellite crop-fire telemetry into plain-language advisories.
+    - Stack: LangGraph, FastAPI, NASA FIRMS
+
+05. **Bird Voice AI — 10-Species Audio Classification**
+    - Highlight: 82.4% Unseen Test Accuracy
+    - Description: Transfer learning pipeline using Google YAMNet across 2,100 augmented spectrograms, deployed on HuggingFace.
+    - Stack: TensorFlow, YAMNet, Librosa
+
+06. **Pakistan Federal Budget Bilingual AI RAG**
+    - Highlight: 160+ Pages · English & Urdu
+    - Description: Turns 160+ Federal Budget pages into a bilingual English/Urdu assistant using Parent-Document Retrieval on Pinecone.
+    - Stack: LangChain, Pinecone, Cerebras
+
+07. **Job Lead Converter B2B MCP Server**
+    - Highlight: Automated Lead Enrichment
+    - Description: Scrapes hiring signals, enriches company firmographics, and surfaces verified decision-maker contacts automatically.
+    - Stack: MCP, Agentic AI, Python
+
+08. **Real Estate Conversational Property RAG**
+    - Highlight: 24/7 Conversational Discovery
+    - Description: Enables buyers and renters to search and compare property listings naturally via Jina AI embeddings and Qdrant.
+    - Stack: Qdrant, Jina AI, Chainlit
+
+09. **Multi-Agent Content Pipeline — CrewAI**
+    - Highlight: 3 Hours -> 60 Seconds
+    - Description: Two-agent CrewAI pipeline where a Researcher agent gathers live web stats and a Writer agent drafts posts in 60s.
+    - Stack: CrewAI, Groq LLM, Python
+
+10. **Writing Style Cloning Agent — Agno + Pinecone**
+    - Highlight: Voyage AI + Pinecone Memory
+    - Description: Extracts tone, cadence, and vocabulary from 3-5 writing samples into persistent Pinecone style vectors.
+    - Stack: Agno, Pinecone, Voyage AI
+
+11. **Autonomous CSV Data Analyst — LangGraph**
+    - Highlight: CSV -> Live Charts -> PDF Report
+    - Description: Routes plain-English questions over uploaded CSVs to specialist Analyst and Chart Generator agents with PDF export.
+    - Stack: LangGraph, Streamlit, Matplotlib
+
+12. **Zero-Framework ReAct Agent & Glaucoma Few-Shot Vision**
+    - Highlight: PyTorch U-Net + MAML Meta-Learning
+    - Description: First-principles Python ReAct agent paired with clinical glaucoma optic-disc segmentation via U-Net and MAML.
+    - Stack: PyTorch, U-Net & MAML, Python
+
+---
+
+## 03 // CREDENTIALS & CERTIFICATIONS
+
+- Anthropic: Claude Code badge
+- DataCamp: Data Scientist Associate
+- DataCamp: AI Engineer for Developers
+- Udacity: Future AWS AI Programmer
+- Founderz: Agent Architect
+- Google: Gemini Certified Student
+- DeepLearning.AI: Generative AI with LLMs
+- Astronomer: Apache Airflow 3
+- n8n Verified Template Creator
+- Afrium Summer of Code 2026
+- Published preprint on conformal prediction (SSRN & Zenodo)
+
+---
+
+## 04 // PROFESSIONAL EXPERIENCE
+
+1. **n8n Verified Template Creator · n8n**
+   Engineering verified production AI workflows across email operations, meeting intelligence, and multi-channel publishing.
+
+2. **AI Engineer — Agentic AI & Automation · Excellence Code Solution**
+   Building applied agentic backends and PyTorch U-Net + MAML few-shot medical computer vision segmentation.
+
+3. **AI Native Developer (ASoC 2026) · Afrium**
+   Architected the Dynamic Context Engine feeding real-time codebase and documentation context to autonomous AI agents.
+
+4. **Machine Learning Engineering · FlyRank AI**
+   Built end-to-end machine learning pipelines, feature engineering, and model deployment workflows on real-world datasets.
