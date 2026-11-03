@@ -31,10 +31,15 @@
 
 * { margin: 0; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 body {
   min-height: 100svh;
+  max-width: 100%;
   background: var(--ground-deep);
   color: var(--ink);
   font-family: var(--font-body);

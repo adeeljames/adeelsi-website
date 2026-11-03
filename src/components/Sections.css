@@ -1413,51 +1413,52 @@
 
   /* Section rhythm & headings on mobile (sized so titles stay on their intended lines) */
   .sec {
-    padding: 42px var(--gutter) 0;
+    padding: 34px var(--gutter) 0;
   }
   .sec__head {
-    gap: 6px;
+    gap: 5px;
     max-width: 100%;
   }
   .sec__eyebrow {
-    font-size: 9.5px;
+    font-size: 9px;
     letter-spacing: 0.11em;
   }
   .sec__title {
     max-width: 100%;
-    font-size: clamp(1.32rem, 5.3vw, 1.75rem);
+    font-size: clamp(1.26rem, 5.1vw, 1.68rem);
     line-height: 1.06;
     letter-spacing: -0.025em;
   }
   .sec__sub {
-    font-size: 13px;
-    line-height: 1.48;
+    max-width: 38ch;
+    font-size: 11.5px;
+    line-height: 1.44;
   }
 
   /* 01 // Services compact cards on mobile */
   .srv-grid {
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 16px;
   }
   .srv-card {
     min-height: auto;
-    padding: 16px 18px;
-    gap: 12px;
-    border-radius: 16px;
+    padding: 14px 16px;
+    gap: 10px;
+    border-radius: 15px;
   }
   .srv-card__tags li {
     padding: 3px 8px;
-    font-size: 10.5px;
-  }
-  .srv-card__code {
     font-size: 10px;
   }
+  .srv-card__code {
+    font-size: 9.5px;
+  }
   .srv-card__title {
-    font-size: 1.18rem;
+    font-size: 1.12rem;
   }
   .srv-card__desc {
-    font-size: 13px;
-    line-height: 1.48;
+    font-size: 11.5px;
+    line-height: 1.44;
   }
   .srv-card__foot {
     padding-top: 10px;
@@ -1470,7 +1471,7 @@
 
   /* 02 // Certified Agent Architect compact & centered on mobile */
   .arch-wrap {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 18px;
   }
   .arch-portrait {
@@ -1498,17 +1499,18 @@
   }
   .arch-content {
     gap: 12px;
+    min-width: 0;
   }
   .arch-statement {
-    font-size: clamp(1.15rem, 4.6vw, 1.45rem);
-    line-height: 1.3;
+    font-size: clamp(1.1rem, 4.4vw, 1.38rem);
+    line-height: 1.28;
   }
   .arch-sub {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 11.5px;
+    line-height: 1.45;
   }
   .arch-certs {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px;
     margin-top: 2px;
   }
@@ -1527,33 +1529,33 @@
     height: 16px;
   }
   .arch-cert-card__title {
-    font-size: 12.5px;
+    font-size: 12px;
   }
   .arch-cert-card__sub {
-    font-size: 10.5px;
+    font-size: 10px;
   }
   .arch-kpis {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
   }
   .arch-kpi {
-    padding: 11px 6px;
+    padding: 10px 6px;
     border-radius: 12px;
     align-items: center;
     text-align: center;
     gap: 4px;
   }
   .arch-kpi__val {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
   .arch-kpi__label {
-    font-size: 10px;
+    font-size: 9.5px;
     line-height: 1.2;
   }
 
   /* 03 // Selected Work single-line scrollable tabs + compact rows on mobile */
   .work-header {
-    gap: 12px;
+    gap: 10px;
   }
   .work-tabs {
     flex-wrap: nowrap;
@@ -1570,48 +1572,74 @@
   .work-tab {
     flex: 0 0 auto;
     padding: 6px 11px;
-    font-size: 12px;
+    font-size: 11.5px;
     border-radius: 8px;
   }
   .wm-flagship {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin-top: 16px;
-    padding: 16px 16px;
-    border-radius: 18px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
   .wm-flagship__crown {
-    font-size: 9.5px;
-    padding: 4px 9px;
+    font-size: 9px;
+    padding: 3px 8px;
+    letter-spacing: 0.08em;
   }
   .wm-flagship__spark {
-    font-size: 10.5px;
-    padding: 3px 9px;
+    font-size: 9.5px;
+    padding: 3px 8px;
   }
   .wm-flagship__title {
-    font-size: 1.18rem;
+    font-size: 1.08rem;
+    line-height: 1.2;
   }
   .wm-flagship__desc {
-    font-size: 12.5px;
-    line-height: 1.48;
+    font-size: 11.5px;
+    line-height: 1.42;
   }
   .wm-flagship__tags {
     gap: 5px;
   }
   .wm-flagship__tags li {
-    padding: 3px 9px;
-    font-size: 10.5px;
+    padding: 3px 8px;
+    font-size: 10px;
   }
   .wm-flagship__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     min-width: 0;
+    width: 100%;
     gap: 8px;
   }
-  .wm-flagship__btn-primary,
+  .wm-flagship__btn-primary {
+    justify-content: space-between;
+    padding: 0.42em 0.45em 0.42em 0.95em;
+    font-size: 12px;
+    white-space: nowrap;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .wm-flagship__btn-primary .hero__go-dot {
+    width: 2.1em;
+    height: 2.1em;
+  }
   .wm-flagship__btn-secondary {
-    flex: 1;
-    font-size: 12.5px;
+    padding: 8px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    justify-content: center;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  @media (max-width: 390px) {
+    .wm-flagship__actions {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
   .work-list {
     margin-top: 16px;
@@ -1689,8 +1717,8 @@
     font-size: 10px;
   }
   .exp-row__desc {
-    font-size: 13px;
-    line-height: 1.48;
+    font-size: 11.5px;
+    line-height: 1.44;
   }
   .exp-row__date {
     text-align: left;
@@ -1700,23 +1728,25 @@
 
   /* Contact & Single-Row Ask AI Chatbot Tiles on mobile */
   .sec--contact {
-    padding-bottom: 44px;
+    padding-bottom: 36px;
   }
   .contact__title {
-    font-size: clamp(1.5rem, 6.2vw, 2.05rem);
+    font-size: clamp(1.42rem, 6vw, 1.95rem);
     line-height: 1.04;
   }
   .contact__sub {
-    margin-top: 10px;
-    font-size: 13px;
+    margin-top: 8px;
+    max-width: 36ch;
+    font-size: 11.5px;
+    line-height: 1.44;
   }
   .contact__actions {
-    margin-top: 18px;
-    gap: 10px;
+    margin-top: 14px;
+    gap: 8px;
   }
   .contact__go,
   .contact__call {
-    font-size: 13.5px;
+    font-size: 12.5px;
   }
   .ai-ask {
     margin-top: 32px;

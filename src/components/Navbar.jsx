@@ -14,7 +14,7 @@ const wardmailLinks = [
   { label: 'How it works', href: '#how' },
   { label: 'Google Sheet', href: '#sheet' },
   { label: 'Demo & Panel', href: '#demo' },
-  { label: "Who it's for", href: '#niches' },
+  { label: 'Pricing & Training', href: '#offer' },
   { label: 'FAQ', href: '#faq' },
 ]
 
@@ -28,6 +28,11 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
 
   const goRoute = (e, path, hash = '') => {
     setOpen(false)
+    if (path === '/wardmail' && isWardmail) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
     if (onNavigate) {
       e.preventDefault()
       onNavigate(path, hash)

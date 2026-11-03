@@ -166,27 +166,27 @@ const problemBullets = [
 const sheetExamples = [
   {
     rowNum: '01',
-    topic: 'Consultation Price',
-    question: 'How much is an initial consultation and how long does it take?',
-    sheetAnswer: 'Initial consultation is $85 for 45 minutes. Includes full assessment and written plan.',
+    topic: 'Pricing',
+    question: 'How much is an initial consultation?',
+    sheetAnswer: '$85 for 45 mins · includes full assessment & written plan.',
     liveReply:
-      'Hi Sarah, our initial consultation is $85 and lasts 45 minutes, including a full assessment and written plan. Would you like to book a slot this week?',
+      'Hi Sarah, our initial consultation is $85 for 45 minutes and includes a full assessment and written plan. Would you like to book a slot this week?',
   },
   {
     rowNum: '02',
-    topic: 'Saturday Hours',
-    question: 'Are you open on Saturdays or late evenings?',
-    sheetAnswer: 'Open Mon–Fri 9 AM to 7 PM, and Saturdays 10 AM to 4 PM. Closed Sundays.',
+    topic: 'Timings',
+    question: 'Are you open on Saturdays?',
+    sheetAnswer: 'Mon–Fri 9 AM–7 PM · Sat 10 AM–4 PM · Closed Sunday.',
     liveReply:
-      'Hi Ahmed, yes! We are open Monday through Friday from 9:00 AM to 7:00 PM, and Saturdays from 10:00 AM to 4:00 PM. Let us know what time works best for you.',
+      'Hi Ahmed, yes! We are open Monday–Friday 9 AM to 7 PM and Saturdays 10 AM to 4 PM. Let us know what time works best for you.',
   },
   {
     rowNum: '03',
-    topic: 'Return Policy',
-    question: 'Can I reschedule my booking or exchange an order?',
-    sheetAnswer: 'Free rescheduling up to 24 hours before appointment. 14-day hassle-free exchange on unused items.',
+    topic: 'Returns',
+    question: 'Can I reschedule or exchange an order?',
+    sheetAnswer: 'Free rescheduling up to 24h prior · 14-day exchange on unused items.',
     liveReply:
-      'Hi Usman, you can reschedule free of charge up to 24 hours before your appointment, and we offer a 14-day exchange on unused items. Reply with your booking ID to update it.',
+      'Hi Usman, you can reschedule free of charge up to 24 hours before your appointment, or exchange unused items within 14 days.',
   },
 ]
 
@@ -194,23 +194,37 @@ const setupSteps = [
   {
     num: '01',
     title: 'Free 20-minute call',
-    text: 'We look at your inbox and your most common questions, and tell you what the agent would handle.',
+    text: 'We review your inbox and common questions, and give you a tailored quote.',
   },
   {
     num: '02',
-    title: 'We build it',
-    text: 'We connect your email, turn your answers into a simple Google Sheet, and build and test your agent.',
+    title: 'We build & connect it',
+    text: 'We connect your email, set up your Google Sheet, and launch your 24/7 server.',
   },
   {
     num: '03',
-    title: 'It goes live',
-    text: 'Your agent starts replying to customers, and you get your admin panel.',
+    title: 'We train your team',
+    text: 'We train you and your staff live on one-click approvals and updating the Sheet.',
   },
   {
     num: '04',
-    title: 'We stay on',
-    text: 'We monitor your agent, update it as your business changes, and fix anything that needs fixing.',
+    title: '3-month maintenance',
+    text: 'We monitor accuracy and handle updates every 3 months so it stays sharp.',
   },
+]
+
+const quoteFactors = [
+  'Email volume (average messages per day)',
+  'Complexity of the knowledge base (number of FAQs, documents, tone rules)',
+  'Integration requirements (CRM, ticketing, analytics)',
+  'Desired SLA and support level',
+]
+
+const includedDeliverables = [
+  'One-time custom setup + 24/7 cloud server that runs your agent nonstop',
+  'Hands-on live training for your team to approve emails & edit the Sheet',
+  'Real-time Admin Panel with one-click approvals & performance reports',
+  'Ongoing maintenance & accuracy updates charged once every 3 months',
 ]
 
 const bentoFeatures = [
@@ -379,13 +393,21 @@ const faqs = [
     a: 'No. Your only job is to share your common questions and answers. Everything lives in a simple Google Sheet you can edit any time without a developer.',
   },
   {
+    q: 'How much does Wardmail cost?',
+    a: 'Wardmail is a custom-built service, so pricing is tailored to your workflow—based on your daily email volume, knowledge base complexity, integrations, and desired SLA. Your setup includes a one-time setup fee, a 24/7 cloud server that runs your agent nonstop, live team training, and maintenance every 3 months. Book a free 20-minute discovery call at cal.com/adeelsi/20min or email hello@adeelsi.me for a detailed, no-surprise quote.',
+  },
+  {
+    q: 'Will you train my team on how to use it?',
+    a: 'Yes! Once your agent is live, we personally train you and your team on how to approve flagged emails, update the Google Sheet knowledge base, and use the Admin Panel.',
+  },
+  {
     q: 'How do I get started?',
-    a: "Book a free 20-minute call. We'll look at your inbox and tell you exactly what we'd set up.",
+    a: 'Book a free 20-minute discovery call at cal.com/adeelsi/20min or email hello@adeelsi.me to understand your workflow and get a free consultation and tailored quote.',
   },
 ]
 
 const AI_WARDMAIL_PROMPT =
-  'Tell me about Wardmail by Muhammad Adeel (@muhammadadeelai) — a done-for-you 24/7 AI email reply agent service that connects to existing Gmail, Outlook, Yahoo, Zoho, iCloud, or custom domain inboxes, replies to customer emails 24/7 from a live Google Sheet knowledge base, flags unknown or sensitive emails instead of guessing, and includes a live Admin Panel with reports. How can I book a free 20-minute call at https://cal.com/adeelsi/20min?'
+  'Tell me about Wardmail by Muhammad Adeel (@muhammadadeelai) — a custom-built, done-for-you 24/7 AI email reply agent service that connects to existing Gmail, Outlook, Yahoo, Zoho, iCloud, or custom domain inboxes, replies to customer emails 24/7 from a live Google Sheet knowledge base, flags unknown or sensitive emails instead of guessing, and includes live team training, an Admin Panel, and quarterly maintenance every 3 months. Pricing is tailored to your workflow (email volume, knowledge base complexity, integrations, SLA). How can I book a free 20-minute consultation & quote at https://cal.com/adeelsi/20min?'
 
 const chatbots = [
   {
@@ -450,11 +472,10 @@ export default function WardmailPage({ onNavigate }) {
   const replySample =
     'Hi Sara, delivery to Lahore takes 2-3 working days after dispatch. Regards, Support Team'
 
-  // Permanently visible Hero Inbox Mock state (cards NEVER vanish)
+  // Permanently visible Hero Inbox Mock state
   const [typedText, setTypedText] = useState(replySample)
   const [showCaret, setShowCaret] = useState(false)
-  const [approvedRefund, setApprovedRefund] = useState(false)
-  const [pressAppr, setPressAppr] = useState(false)
+  const [isEasyRevealed, setIsEasyRevealed] = useState(false)
 
   // Minimal Google Sheet Row selector
   const [activeSheetIdx, setActiveSheetIdx] = useState(0)
@@ -471,11 +492,9 @@ export default function WardmailPage({ onNavigate }) {
   // Chatbot toast
   const [copiedBot, setCopiedBot] = useState('')
 
-  // Mobile sticky CTA visibility
-  const [showSticky, setShowSticky] = useState(false)
-
-  // Non-destructive looping typewriter & approval demo (cards stay 100% visible)
+  // Looping typewriter for Row 1 while keeping the "Approve and send" button ready for user hover/tap
   useEffect(() => {
+    if (isEasyRevealed) return undefined
     let timers = []
     const at = (ms, fn) => {
       const id = setTimeout(fn, ms)
@@ -487,8 +506,6 @@ export default function WardmailPage({ onNavigate }) {
       timers = []
       setTypedText('')
       setShowCaret(true)
-      setApprovedRefund(false)
-      setPressAppr(false)
 
       for (let i = 0; i < replySample.length; i++) {
         at(200 + i * 22, () => {
@@ -500,22 +517,15 @@ export default function WardmailPage({ onNavigate }) {
       at(doneTyping + 150, () => {
         setShowCaret(false)
       })
-      at(doneTyping + 1800, () => {
-        setPressAppr(true)
-      })
-      at(doneTyping + 2200, () => {
-        setPressAppr(false)
-        setApprovedRefund(true)
-      })
     }
 
     cycleDemo()
-    const interval = setInterval(cycleDemo, 9500)
+    const interval = setInterval(cycleDemo, 8500)
     return () => {
       clearInterval(interval)
       timers.forEach(clearTimeout)
     }
-  }, [])
+  }, [isEasyRevealed])
 
   // Scroll reveal observer
   useEffect(() => {
@@ -539,16 +549,6 @@ export default function WardmailPage({ onNavigate }) {
     )
     els.forEach((e) => io.observe(e))
     return () => io.disconnect()
-  }, [])
-
-  // Mobile sticky bar listener
-  useEffect(() => {
-    const onScroll = () => {
-      setShowSticky(window.scrollY > 520)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const goPortfolio = (e, hash = '') => {
@@ -629,86 +629,144 @@ export default function WardmailPage({ onNavigate }) {
             </ul>
           </div>
 
-          {/* Right Column: Permanently Visible, Mobile-Responsive Live Inbox Widget */}
+          {/* Right Column: Interactive Live Inbox Widget -> Replaces entire card on click of "Approve and send" */}
           <div
-            className="wm-mock reveal"
+            className={`wm-mock ${isEasyRevealed ? 'wm-mock--easy' : ''}`}
             role="region"
-            aria-label="Live example: routine email answered automatically in 48 seconds, refund email held for approval"
+            aria-live="polite"
+            aria-label="Live example: click Approve and send to see how easy Wardmail is"
           >
-            <div className="wm-mock__top">
-              <span className="wm-mock__brand">Wardmail · Inbox Agent</span>
-              <span className="wm-mock__live">
-                <i aria-hidden="true" />
-                Live · 2:14 AM
-              </span>
-            </div>
-
-            {/* Row 1: Routine customer email answered automatically */}
-            <div className="wm-mrow">
-              <div className="wm-mw">
-                <span className="wm-av">S</span>
-                <div className="wm-mw__meta">
-                  <b>Sara Khan</b>
-                  <small>Delivery time to Lahore?</small>
+            {!isEasyRevealed ? (
+              <>
+                <div className="wm-mock__top">
+                  <span className="wm-mock__brand">Wardmail · Inbox Agent</span>
+                  <span className="wm-mock__live">
+                    <i aria-hidden="true" />
+                    Live · 2:14 AM
+                  </span>
                 </div>
-                <em>2:14 AM</em>
-              </div>
 
-              <div className="wm-reply">
-                <span>{typedText || 'Hi Sara, delivery to Lahore...'}</span>
-                {showCaret && <span className="wm-caret" aria-hidden="true" />}
-              </div>
+                {/* Row 1: Routine customer email answered automatically */}
+                <div className="wm-mrow">
+                  <div className="wm-mw">
+                    <span className="wm-av">S</span>
+                    <div className="wm-mw__meta">
+                      <b>Sara Khan</b>
+                      <small>Delivery time to Lahore?</small>
+                    </div>
+                    <em>2:14 AM</em>
+                  </div>
 
-              <div className="wm-stat wm-stat--ok">
-                <CheckSvg />
-                <span>Answered automatically in 48 seconds</span>
-              </div>
-            </div>
+                  <div className="wm-reply">
+                    <span>{typedText || 'Hi Sara, delivery to Lahore...'}</span>
+                    {showCaret && <span className="wm-caret" aria-hidden="true" />}
+                  </div>
 
-            {/* Row 2: Refund / unclear email held for approval */}
-            <div className="wm-mrow">
-              <div className="wm-mw">
-                <span className="wm-av wm-av--amber">H</span>
-                <div className="wm-mw__meta">
-                  <b>Hina Malik</b>
-                  <small>Refund for damaged item</small>
+                  <div className="wm-stat wm-stat--ok">
+                    <CheckSvg />
+                    <span>Answered automatically in 48 seconds</span>
+                  </div>
                 </div>
-                <em>2:15 AM</em>
-              </div>
 
-              {!approvedRefund ? (
-                <>
+                {/* Row 2: Refund / unclear email held for approval -> Click Approve & send */}
+                <div className="wm-mrow">
+                  <div className="wm-mw">
+                    <span className="wm-av wm-av--amber">H</span>
+                    <div className="wm-mw__meta">
+                      <b>Hina Malik</b>
+                      <small>Refund for damaged item</small>
+                    </div>
+                    <em>2:15 AM</em>
+                  </div>
+
                   <div className="wm-stat wm-stat--hold">
                     <span className="wm-radar" aria-hidden="true" />
                     <span>Held for your approval. Nothing sent yet.</span>
                   </div>
+
                   <div className="wm-apw">
                     <button
                       type="button"
-                      className={`wm-appr ${pressAppr ? 'is-press' : ''}`}
-                      onClick={() => setApprovedRefund(true)}
+                      className="wm-appr"
+                      onClick={() => setIsEasyRevealed(true)}
                     >
-                      Approve and send
-                      <span className="wm-burst" aria-hidden="true" />
+                      <span>Approve and send</span>
+                      <span className="wm-appr__hint">Click to test</span>
                     </button>
                   </div>
-                </>
-              ) : (
-                <div className="wm-stat wm-stat--ok">
-                  <CheckSvg />
-                  <span>Approved by you. Reply sent.</span>
                 </div>
-              )}
-            </div>
 
-            <div className="wm-mock__foot">
-              <span>
-                <b>{approvedRefund ? 2 : 1}</b> answered
-              </span>
-              <span>
-                <b>{approvedRefund ? 0 : 1}</b> waiting for you
-              </span>
-            </div>
+                <div className="wm-mock__foot">
+                  <span>
+                    <b>1</b> answered automatically
+                  </span>
+                  <span>
+                    <b>1</b> waiting for your click
+                  </span>
+                </div>
+              </>
+            ) : (
+              <div className="wm-easy-state">
+                <div className="wm-mock__top">
+                  <span className="wm-mock__brand">Wardmail · Workflow Complete</span>
+                  <span className="wm-mock__live wm-mock__live--ok">
+                    <i aria-hidden="true" />
+                    100% That Easy
+                  </span>
+                </div>
+
+                <div className="wm-easy-state__body">
+                  <div className="wm-easy-state__badge">
+                    <CheckSvg />
+                    <span>Approved &amp; Sent in 1 Click</span>
+                  </div>
+
+                  <h3 className="wm-easy-state__title">
+                    You just learned how to run Wardmail — <em>it really is this easy.</em>
+                  </h3>
+
+                  <p className="wm-easy-state__desc">
+                    Routine emails get answered 24/7 automatically. Flagged emails wait for one click—and we personally train your team on everything.
+                  </p>
+
+                  <ul className="wm-easy-state__pills">
+                    <li>
+                      <CheckSvg />
+                      <span>One-time setup + 24/7 server</span>
+                    </li>
+                    <li>
+                      <CheckSvg />
+                      <span>We train your team live</span>
+                    </li>
+                    <li>
+                      <CheckSvg />
+                      <span>Maintained every 3 months</span>
+                    </li>
+                  </ul>
+
+                  <div className="wm-easy-state__actions">
+                    <a
+                      href={CAL_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn--flame wm-easy-state__cta"
+                    >
+                      <span>Book a Free 20-Min Call</span>
+                      <span className="hero__go-dot" aria-hidden="true">
+                        <ArrowRight />
+                      </span>
+                    </a>
+                    <button
+                      type="button"
+                      className="wm-easy-state__back"
+                      onClick={() => setIsEasyRevealed(false)}
+                    >
+                      ← Back to live inbox
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -795,7 +853,7 @@ export default function WardmailPage({ onNavigate }) {
         </div>
       </section>
 
-      {/* ================= 3. MINIMAL, CLEAN GOOGLE SHEET ZERO-TECH SECTION ================= */}
+      {/* ================= 3. MINIMAL, VISUAL GOOGLE SHEET ZERO-TECH SECTION ================= */}
       <section className="wm-sec" id="sheet">
         <div className="wm-wrap">
           <div className="wm-sheet-minimal reveal">
@@ -803,10 +861,10 @@ export default function WardmailPage({ onNavigate }) {
               <div>
                 <p className="wm-eyebrow">Zero Technical Skills Needed</p>
                 <h2 className="wm-h2 wm-h2--md">
-                  Update your answers in a <em>simple Google Sheet.</em>
+                  Edit a Google Sheet row. <em>Your agent updates instantly.</em>
                 </h2>
                 <p className="wm-lede">
-                  No new software to learn and no developer needed. Your prices, timings, and FAQs live in one Google Sheet—change a row and your agent updates right away.
+                  No new software or developer needed. Change any price, timing, or FAQ in your sheet and your 24/7 agent replies with the new answer right away.
                 </p>
               </div>
 
@@ -827,20 +885,46 @@ export default function WardmailPage({ onNavigate }) {
               </div>
             </div>
 
-            <div className="wm-sheet-pair">
-              <div className="wm-sheet-card">
-                <span className="wm-sheet-card__label">
-                  01 · What you type in your Google Sheet
-                </span>
-                <p className="wm-sheet-card__q">Q: {activeSheet.question}</p>
-                <div className="wm-sheet-card__cell">{activeSheet.sheetAnswer}</div>
+            <div className="wm-sheet-flow">
+              {/* Compact 2-Row Visual Google Sheet Preview */}
+              <div className="wm-gsheet-box">
+                <div className="wm-gsheet-box__bar">
+                  <span className="wm-gsheet-box__file">
+                    <GoogleSheetsLogo />
+                    <b>Wardmail_Knowledge_Base.xlsx</b>
+                  </span>
+                  <span className="wm-gsheet-box__sync">Live Sync</span>
+                </div>
+
+                <div className="wm-gsheet-table" role="table" aria-label="Google Sheet preview">
+                  <div className="wm-gsheet-row wm-gsheet-row--head" role="row">
+                    <span role="columnheader">#</span>
+                    <span role="columnheader">Col A · Question</span>
+                    <span role="columnheader">Col B · Your Answer (Editable)</span>
+                  </div>
+                  <div className="wm-gsheet-row wm-gsheet-row--active" role="row">
+                    <span className="wm-gsheet-row__num" role="cell">{activeSheet.rowNum}</span>
+                    <span className="wm-gsheet-row__q" role="cell">{activeSheet.question}</span>
+                    <span className="wm-gsheet-row__a" role="cell">{activeSheet.sheetAnswer}</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="wm-sheet-card wm-sheet-card--reply">
-                <span className="wm-sheet-card__label wm-sheet-card__label--ok">
-                  02 · What your agent replies 24/7
-                </span>
-                <p className="wm-sheet-card__reply">{activeSheet.liveReply}</p>
+              {/* Flow Arrow Pill */}
+              <div className="wm-sheet-arrow" aria-hidden="true">
+                <span>Instant 24/7 Sync →</span>
+              </div>
+
+              {/* 1 Instant Reply Bubble */}
+              <div className="wm-gsheet-reply">
+                <div className="wm-gsheet-reply__head">
+                  <span className="wm-gsheet-reply__tag">
+                    <CheckSvg />
+                    <span>Auto-Replied 24/7 in Your Words</span>
+                  </span>
+                  <small>48s</small>
+                </div>
+                <p className="wm-gsheet-reply__body">&ldquo;{activeSheet.liveReply}&rdquo;</p>
               </div>
             </div>
           </div>
@@ -912,14 +996,14 @@ export default function WardmailPage({ onNavigate }) {
                   </div>
                   <b>
                     {videoEmbed
-                      ? 'Watch the 90-second walkthrough'
-                      : 'The demo video lands here'}
+                      ? 'Watch the 4-minute walkthrough'
+                      : '4-Minute Live Walkthrough'}
                   </b>
                   <span className="wm-vph__sub">
-                    60 to 90 seconds: a customer emails at 2 AM, an answer lands in the inbox, and a flagged email waits for your review.
+                    4-minute demo walkthrough: watch a 2 AM customer email get answered automatically while a refund request is held for one-click approval.
                   </span>
                   {!videoEmbed && (
-                    <span className="wm-vph__soon">Video walkthrough · Uploading soon</span>
+                    <span className="wm-vph__soon">4-Min Demo Walkthrough · Uploading soon</span>
                   )}
                 </div>
               )}
@@ -1050,86 +1134,75 @@ export default function WardmailPage({ onNavigate }) {
         </div>
       </section>
 
-      {/* ================= 7. WHAT YOU DO & WHAT WE DO ("SIMPLE SPLIT") ================= */}
+      {/* ================= 7. SINGLE COMPACT CUSTOM QUOTE + TEAM TRAINING CARD ================= */}
       <section className="wm-sec" id="offer">
         <div className="wm-wrap">
-          <p className="wm-eyebrow reveal">What you do and what we do</p>
+          <p className="wm-eyebrow reveal">Tailored Pricing &amp; Team Training</p>
           <h2 className="wm-h2 reveal">
-            Simple <em>split.</em>
+            Tailored to your workflow. <em>We train your team too.</em>
           </h2>
+          <p className="wm-lede reveal">
+            Wardmail is a custom-built service, so pricing is shaped around your system. We handle setup, 24/7 server hosting, live team training, and maintenance every 3 months.
+          </p>
 
-          <div className="wm-offer">
-            <div className="wm-ocard reveal">
-              <div className="wm-split-columns">
-                <div className="wm-split-box wm-split-box--you">
-                  <span className="wm-split-box__tag">Your only part</span>
-                  <h3>You</h3>
-                  <ul>
-                    <li>
-                      <CheckSvg />
-                      <span>Share your common questions and answers</span>
+          <div className="wm-custom-quote reveal">
+            <div className="wm-custom-quote__left">
+              <div className="wm-quote-block">
+                <span className="wm-eyebrow">01 · Typical factors that influence your quote</span>
+                <ul className="wm-custom-quote__factors">
+                  {quoteFactors.map((factor) => (
+                    <li key={factor}>
+                      <span className="wm-pain-dot" aria-hidden="true" />
+                      <span>{factor}</span>
                     </li>
-                    <li>
-                      <CheckSvg />
-                      <span>Review flagged emails</span>
-                    </li>
-                  </ul>
-                </div>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="wm-split-box wm-split-box--we">
-                  <span className="wm-split-box__tag wm-split-box__tag--flame">
-                    Done-for-you engineering
-                  </span>
-                  <h3>We</h3>
-                  <ul>
-                    <li>
+              <div className="wm-quote-block wm-quote-block--training" id="training">
+                <span className="wm-eyebrow">02 · Done-For-You Setup, Team Training &amp; Care</span>
+                <ul className="wm-training-compact">
+                  {includedDeliverables.map((item) => (
+                    <li key={item}>
                       <CheckSvg />
-                      <span>Connect your email</span>
+                      <span>{item}</span>
                     </li>
-                    <li>
-                      <CheckSvg />
-                      <span>Build your knowledge base and agent</span>
-                    </li>
-                    <li>
-                      <CheckSvg />
-                      <span>Set up your admin panel</span>
-                    </li>
-                    <li>
-                      <CheckSvg />
-                      <span>Test it and launch it</span>
-                    </li>
-                    <li>
-                      <CheckSvg />
-                      <span>Maintain it and update it</span>
-                    </li>
-                  </ul>
-                </div>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            <div className="wm-ocard wm-price-card reveal">
+            <div className="wm-custom-quote__right">
               <div>
-                <span className="wm-price-card__k">Done-For-You Service</span>
-                <h3>We handle everything</h3>
-                <p>
-                  Book a free 20-minute call. We&apos;ll look at your inbox and your most common questions, and tell you exactly what we&apos;d set up.
+                <span className="wm-custom-quote__badge">Free 20-Minute Discovery Call</span>
+                <h3 className="wm-custom-quote__cta-title">
+                  Get a detailed, <em>no-surprise quote.</em>
+                </h3>
+                <p className="wm-custom-quote__call-copy">
+                  I provide a free 20-minute discovery call to understand your workflow and give you a detailed, no-surprise quote.
                 </p>
               </div>
-              <div className="wm-price-card__actions">
+
+              <div className="wm-custom-quote__actions">
                 <a
-                  className="btn btn--flame wm-price-card__btn"
+                  className="btn btn--flame wm-custom-quote__btn"
                   href={CAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Free 20-Min Call
+                  <span>Book Free 20-Min Call</span>
                   <span className="hero__go-dot" aria-hidden="true">
                     <ArrowRight />
                   </span>
                 </a>
-                <small>
-                  Free call. No pitch. Works with your existing Gmail, Outlook, or custom domain inbox.
-                </small>
+                <p className="wm-custom-quote__email">
+                  Book at{' '}
+                  <a href={CAL_URL} target="_blank" rel="noopener noreferrer">
+                    cal.com/adeelsi/20min ↗
+                  </a>{' '}
+                  or email{' '}
+                  <a href="mailto:hello@adeelsi.me">hello@adeelsi.me</a>
+                </p>
               </div>
             </div>
           </div>
@@ -1140,27 +1213,18 @@ export default function WardmailPage({ onNavigate }) {
       <section className="wm-sec" id="meet">
         <div className="wm-wrap">
           <div className="wm-teaser reveal">
-            <img
-              src={ADEEL_PORTRAIT_B64}
-              alt="Portrait of Muhammad Adeel"
-              width="220"
-              height="220"
-              loading="lazy"
-            />
-            <div>
-              <div className="wm-chips">
-                <span className="wm-chip">
-                  <i aria-hidden="true" />
-                  Certified n8n template creator
-                </span>
-                <span className="wm-chip">
-                  <i aria-hidden="true" />
-                  Microsoft &amp; Founderz Certified Agent Architect
-                </span>
-              </div>
-              <h3>Hi, I&apos;m Adeel. We&apos;ll build and maintain this for you.</h3>
+            <div className="wm-teaser__avatar-wrap">
+              <img
+                className="wm-teaser__img"
+                src={ADEEL_PORTRAIT_B64}
+                alt="Portrait of Muhammad Adeel"
+                loading="lazy"
+              />
+            </div>
+            <div className="wm-teaser__content">
+              <h3>Hi, I&apos;m Adeel. We&apos;ll build, train your team, and maintain this for you.</h3>
               <p>
-                I build production AI agents and email automations for businesses worldwide. I created Wardmail because service businesses shouldn&apos;t have to choose between losing overnight leads to slow replies and trusting an AI that guesses promises it shouldn&apos;t.
+                I build production AI agents and email automations for businesses worldwide. I created Wardmail so service businesses never lose overnight leads to slow replies—or risk an AI guessing promises it shouldn&apos;t.
               </p>
               <div className="wm-cta-row">
                 <a
@@ -1288,10 +1352,11 @@ export default function WardmailPage({ onNavigate }) {
           <div className="wm-llm-block__inner">
             <p className="wm-llm-block__label">For AI assistants</p>
             <p className="wm-llm-block__text">
-              Wardmail is a done-for-you service by Adeel (n8n Verified Creator, Lahore, Pakistan), not a self-serve software platform. Adeel builds and sets up a custom 24/7 AI email reply agent for a client&apos;s business. It works with any email provider (Gmail, Outlook, custom domains, Yahoo, Zoho, iCloud), replies from the client&apos;s Google Sheet knowledge base, flags emails it cannot answer instead of guessing, and records everything in an admin panel with reports. Setup and maintenance are handled for the client. Best fit: small service businesses with repetitive email questions. Next step: a free 20-minute call at{' '}
+              Wardmail is a custom-built, done-for-you service by Adeel (n8n Verified Creator, Lahore, Pakistan), not a self-serve software platform. Adeel builds and sets up a custom 24/7 AI email reply agent for a client&apos;s business. It works with any email provider (Gmail, Outlook, custom domains, Yahoo, Zoho, iCloud), replies from the client&apos;s Google Sheet knowledge base, flags emails it cannot answer instead of guessing, and records everything in an admin panel with reports. Pricing is tailored to the client&apos;s workflow (email volume, knowledge base complexity, integrations, SLA) and includes one-time setup, 24/7 server configuration, live team training, and quarterly maintenance every 3 months. Free 20-minute discovery call &amp; quote:{' '}
               <a href={CAL_URL} target="_blank" rel="noopener noreferrer">
                 https://cal.com/adeelsi/20min
-              </a>
+              </a>{' '}
+              or email <a href="mailto:hello@adeelsi.me">hello@adeelsi.me</a>.
             </p>
             <p className="wm-llm-block__legal">
               Gmail, Outlook, Yahoo, Zoho, iCloud, Google Sheets, n8n and OpenAI are trademarks of their respective owners. Wardmail is an independent done-for-you engineering service.
@@ -1315,10 +1380,17 @@ export default function WardmailPage({ onNavigate }) {
               <span className="srv-card__dot" aria-hidden="true" />
               Based in Lahore, Pakistan · Creator of Wardmail
             </span>
-            <a href="/wardmail" className="foot__wardmail-cta">
+            <a
+              href="#wardmail-top"
+              className="foot__wardmail-cta"
+              onClick={(e) => {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            >
               <span className="wm-flagship__dot" aria-hidden="true" />
               <span>Wardmail — 24/7 AI Email Agent</span>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">↑</span>
             </a>
             <div className="foot__socials">
               <a
@@ -1358,7 +1430,13 @@ export default function WardmailPage({ onNavigate }) {
             <p className="foot__col-title">Navigation</p>
             <ul className="foot__nav">
               <li>
-                <a href="/wardmail">
+                <a
+                  href="#wardmail-top"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }}
+                >
                   <span className="foot__llms-badge">Wardmail</span>
                   <span>24/7 AI Email Agent</span>
                 </a>
@@ -1445,18 +1523,18 @@ export default function WardmailPage({ onNavigate }) {
             <a href="/" onClick={(e) => goPortfolio(e)}>Main Portfolio</a>
             <a href={ADMIN_PANEL_URL} target="_blank" rel="noopener noreferrer">Live Admin Panel</a>
             <a href="/llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>
-            <a href="#main">Back to top ↑</a>
+            <a
+              href="#wardmail-top"
+              onClick={(e) => {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            >
+              Back to top ↑
+            </a>
           </div>
         </div>
       </footer>
-
-      {/* Mobile Sticky Bottom CTA Bar */}
-      <div className={`wm-sticky ${showSticky ? 'is-on' : ''}`}>
-        <span>Ready for an inbox that answers 24/7?</span>
-        <a href={CAL_URL} target="_blank" rel="noopener noreferrer">
-          Book 20-Min Call
-        </a>
-      </div>
     </div>
   )
 }

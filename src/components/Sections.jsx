@@ -103,16 +103,6 @@ const services = [
 
 const projects = [
   {
-    n: '★',
-    title: 'Wardmail — Done-For-You 24/7 AI Email Reply Agent',
-    spark: '⚡ Flagship Product · Live Inbox & Admin Panel',
-    text: 'Replies to customer emails 24/7 from your Google Sheet knowledge base on your existing inbox, and holds refunds or unknown emails for your approval.',
-    tags: ['Gmail & Outlook', 'Google Sheets', 'n8n & OpenAI'],
-    category: 'agents',
-    featured: true,
-    isWardmail: true,
-  },
-  {
     n: '01',
     title: '24/7 WhatsApp Rental & Service Booking AI Agent',
     spark: '⚡ Voice Notes + PDF Quote & Receipt',
@@ -223,11 +213,11 @@ const projects = [
 ]
 
 const projectCategories = [
-  { id: 'featured', label: 'Featured', count: 5 },
-  { id: 'agents', label: 'Autonomous Agents', count: 5 },
+  { id: 'featured', label: 'Featured', count: 4 },
+  { id: 'agents', label: 'Autonomous Agents', count: 4 },
   { id: 'rag', label: 'RAG & MCP', count: 4 },
   { id: 'ml', label: 'ML, Vision & Data', count: 4 },
-  { id: 'all', label: 'All Systems', count: 13 },
+  { id: 'all', label: 'All Systems', count: 12 },
 ]
 
 const experience = [
@@ -503,33 +493,32 @@ export default function Sections({ onNavigate }) {
           </div>
         </div>
 
-        {/* PRECIOUS / DOMINANT FLAGSHIP PRODUCT CARD FOR WARDMAIL */}
+        {/* PRECIOUS / DOMINANT FLAGSHIP PRODUCT CARD FOR WARDMAIL (SINGLE MENTION IN WORK) */}
         <article className="wm-flagship reveal">
           <div className="wm-flagship__glow" aria-hidden="true" />
           <div className="wm-flagship__main">
             <div className="wm-flagship__badges">
               <span className="wm-flagship__crown">
                 <span className="wm-flagship__dot" aria-hidden="true" />
-                FLAGSHIP PRODUCT · DONE-FOR-YOU SERVICE
+                FLAGSHIP PRODUCT · DONE-FOR-YOU
               </span>
-              <span className="wm-flagship__spark">⚡ 24/7 AI Email Reply Agent</span>
+              <span className="wm-flagship__spark">⚡ 24/7 AI Email Agent</span>
             </div>
 
             <h3 className="wm-flagship__title">
               <a href="/wardmail" onClick={goWardmail}>
-                Wardmail — Every Customer Email Answered. Day or Night. <em>In Your Words.</em>
+                Wardmail — Every Customer Email Answered 24/7. <em>In Your Words.</em>
               </a>
             </h3>
 
             <p className="wm-flagship__desc">
-              We build and set up a custom 24/7 AI email agent that connects to your existing inbox (Gmail, Outlook, Yahoo, Zoho, iCloud, or custom domain), replies using your live Google Sheet knowledge base, flags emails it can&apos;t answer instead of guessing, and logs everything in a real-time Admin Panel.
+              Done-for-you 24/7 AI email agent for your existing inbox. Replies from your live Google Sheet knowledge base, holds unknown or sensitive emails for your approval, and includes full team training + a live Admin Panel.
             </p>
 
             <ul className="wm-flagship__tags">
               <li>Gmail · Outlook · Custom Domain</li>
               <li>Google Sheet Knowledge Base</li>
-              <li>Zero Guessing (Flags Unknowns)</li>
-              <li>Live Admin Panel &amp; Reports</li>
+              <li>Zero Guessing · Live Admin Panel</li>
             </ul>
           </div>
 
@@ -539,7 +528,7 @@ export default function Sections({ onNavigate }) {
               className="btn btn--flame wm-flagship__btn-primary"
               onClick={goWardmail}
             >
-              Explore Wardmail
+              <span>Explore Wardmail</span>
               <span className="hero__go-dot" aria-hidden="true">
                 <ArrowRight />
               </span>
@@ -550,7 +539,7 @@ export default function Sections({ onNavigate }) {
               rel="noopener noreferrer"
               className="wm-flagship__btn-secondary"
             >
-              <span>See Live Admin Panel</span>
+              <span>Live Admin Panel</span>
               <ArrowUpRight />
             </a>
           </div>
