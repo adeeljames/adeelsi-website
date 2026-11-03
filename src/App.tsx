@@ -5,11 +5,25 @@ import Sections from './components/Sections.jsx'
 import WardmailPage from './components/WardmailPage.jsx'
 import ChatWidget from './components/ChatWidget.jsx'
 
+function isWardmailHost(host: string) {
+  return (
+    host.startsWith('wardmail.') ||
+    host.startsWith('www.wardmail.') ||
+    host.includes('.wardmail.')
+  )
+}
+
 function detectWardmailRoute() {
   if (typeof window === 'undefined') return false
   const host = window.location.hostname.toLowerCase()
   const path = window.location.pathname.toLowerCase()
-  return host.startsWith('wardmail.') || path === '/wardmail' || path.startsWith('/wardmail/')
+  const params = new URLSearchParams(window.location.search)
+  return (
+    isWardmailHost(host) ||
+    path === '/wardmail' ||
+    path.startsWith('/wardmail/') ||
+    params.get('page') === 'wardmail'
+  )
 }
 
 export default function App() {
@@ -35,12 +49,16 @@ export default function App() {
     const goWardmail = targetPath === '/wardmail'
     const host = window.location.hostname.toLowerCase()
 
-    if (host.startsWith('wardmail.') && !goWardmail) {
+    if (isWardmailHost(host) && !goWardmail) {
       window.location.href = `https://adeelsi.me/${hash}`
       return
     }
 
-    const nextUrl = goWardmail ? '/wardmail' : `/${hash}`
+    const nextUrl = goWardmail
+      ? isWardmailHost(host)
+        ? '/'
+        : '/wardmail'
+      : `/${hash}`
     window.history.pushState({}, '', nextUrl)
     setIsWardmail(goWardmail)
 
