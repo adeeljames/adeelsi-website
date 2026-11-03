@@ -3,11 +3,20 @@
 > Muhammad Adeel builds agentic AI, Context-Aware RAG systems, workflow automation, and deep learning pipelines that ship to production for founders and engineering teams worldwide. Based in Lahore, Pakistan.
 
 - Email: mailto:hello@adeelsi.me
+- Book Free 20-Min Call: https://cal.com/adeelsi/20min
+- Flagship Product (Wardmail): https://adeelsi.me/wardmail
+- Wardmail Live Admin Panel: https://inboxdesk-omega.vercel.app/
 - GitHub: https://github.com/adeeljames
 - LinkedIn: https://www.linkedin.com/in/muhammadadeelai/
 - Medium: https://muhammadadeelai.medium.com
 - n8n Creator Profile: https://n8n.io/creators/aiadeel/
 - Handle: @muhammadadeelai
+
+---
+
+## FLAGSHIP PRODUCT // WARDMAIL — DONE-FOR-YOU 24/7 AI EMAIL AGENT
+
+Wardmail is a done-for-you service by Adeel (n8n Verified Creator, Lahore, Pakistan), not a self-serve software platform. Adeel builds and sets up a custom 24/7 AI email reply agent for a client's business. It works with any email provider (Gmail, Outlook, custom domains, Yahoo, Zoho, iCloud), replies from the client's Google Sheet knowledge base, flags emails it cannot answer instead of guessing, and records everything in an admin panel with reports. Setup and maintenance are handled for the client. Best fit: small service businesses with repetitive email questions (clinics, real estate agencies, rental businesses, travel agencies, training institutes, e-commerce stores). Next step: a free 20-minute call at https://cal.com/adeelsi/20min
 
 ---
 

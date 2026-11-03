@@ -5,9 +5,9 @@ import './ChatWidget.css'
 const CAL_URL = 'https://cal.com/adeelsi/20min'
 
 const STARTERS = [
+  'Tell me about Wardmail (24/7 AI email agent)',
   'What AI agents & RAG systems do you build?',
   'Tell me about your 12 shipped projects',
-  'What is your experience & certifications?',
   'How can I hire you or book a 20-min call?',
 ]
 
@@ -15,7 +15,7 @@ const INITIAL_MESSAGES = [
   {
     role: 'assistant',
     content:
-      "Hi! I’m Muhammad Adeel’s AI assistant. Ask me about his 5 AI services, 12 shipped projects, 4 industry roles, or how to book a free 20-min call.",
+      "Hi! I’m Muhammad Adeel’s AI assistant. Ask me about Wardmail (24/7 AI email reply agent), his 5 AI services, 12 shipped projects, or how to book a free 20-min call.",
   },
 ]
 
@@ -23,19 +23,23 @@ const INITIAL_MESSAGES = [
 function getLocalPortfolioAnswer(query) {
   const q = String(query || '').toLowerCase()
 
+  if (q.includes('wardmail') || q.includes('email') || q.includes('inbox')) {
+    return `Wardmail is a done-for-you 24/7 AI email reply agent service by Muhammad Adeel:\n• Connects directly to your existing Gmail, Outlook, Yahoo, Zoho, iCloud, or custom domain inbox\n• Answers customer emails 24/7 from your live Google Sheet knowledge base (prices, policies, timings, FAQs)\n• Never guesses — flags unfamiliar emails for you in a live Admin Panel (https://inboxdesk-omega.vercel.app/)\n• Explore Wardmail at https://adeelsi.me/wardmail or book a free 20-min call at https://cal.com/adeelsi/20min.`
+  }
+
   if (q.includes('hire') || q.includes('call') || q.includes('book') || q.includes('contact') || q.includes('price') || q.includes('rate')) {
     return `You can hire Muhammad Adeel or discuss your workflow directly:\n• Book a free 20-min call: https://cal.com/adeelsi/20min\n• Email directly: hello@adeelsi.me\n• LinkedIn: https://www.linkedin.com/in/muhammadadeelai/`
   }
 
   if (q.includes('project') || q.includes('work') || q.includes('built') || q.includes('12')) {
-    return `Muhammad Adeel has shipped 12 production AI systems:\n• 01. 24/7 WhatsApp Rental & Service Booking AI Agent (FastAPI, LangChain)\n• 02. SBP Monetary Policy Financial RAG (Docling, Qdrant, Cohere Rerank)\n• 03. Claude External Memory MCP Server (70% token reduction)\n• 04. Lahore Smog Watch Live Air Quality Agent (LangGraph, NASA FIRMS)\n• Plus Bird Voice AI (82.4% accuracy), Pakistan Budget Bilingual RAG, Job Lead B2B MCP, Real Estate RAG, CrewAI Content Pipeline, Style Cloning Agent, CSV Data Analyst, and Glaucoma Few-Shot Vision.\nBook a call at https://cal.com/adeelsi/20min to see a live walkthrough.`
+    return `Muhammad Adeel has shipped Wardmail (24/7 Done-For-You AI Email Agent) plus 12 production AI systems:\n• 01. 24/7 WhatsApp Rental & Service Booking AI Agent (FastAPI, LangChain)\n• 02. SBP Monetary Policy Financial RAG (Docling, Qdrant, Cohere Rerank)\n• 03. Claude External Memory MCP Server (70% token reduction)\n• 04. Lahore Smog Watch Live Air Quality Agent (LangGraph, NASA FIRMS)\n• Plus Bird Voice AI (82.4% accuracy), Pakistan Budget Bilingual RAG, Job Lead B2B MCP, Real Estate RAG, CrewAI Content Pipeline, Style Cloning Agent, CSV Data Analyst, and Glaucoma Few-Shot Vision.\nBook a call at https://cal.com/adeelsi/20min to see a live walkthrough.`
   }
 
   if (q.includes('experience') || q.includes('role') || q.includes('cert') || q.includes('background') || q.includes('who')) {
     return `Muhammad Adeel is a Certified Agent Architect (Microsoft & Founderz), Anthropic Claude Code Partner, and n8n Verified Template Creator.\n• n8n Verified Template Creator · N8N (Jun 2026 — Present)\n• AI Engineer · Excellence Code Solution (Jan 2026 — Present)\n• AI Native Developer (ASoC 2026) · Afrium (Jul 2026 — Present)\n• Machine Learning Engineering · FlyRank AI\nConnect on GitHub at https://github.com/adeeljames or book a call at https://cal.com/adeelsi/20min.`
   }
 
-  return `Muhammad Adeel builds 5 core production AI systems for ROI:\n• Autonomous AI Agents (LangGraph, CrewAI, MCP — 70% token cut)\n• End-to-End Workflow Automation (n8n Verified, Make, Zapier)\n• Context-Aware RAG Systems (Qdrant, Pinecone, Docling)\n• Predictive ML, Vision & Audio AI (PyTorch, U-Net & MAML)\n• Decision Dashboards & Cloud Serving (FastAPI, Power BI, PostgreSQL)\nBook a free 20-min call at https://cal.com/adeelsi/20min or email hello@adeelsi.me.`
+  return `Muhammad Adeel builds Wardmail (24/7 AI email reply agent) and 5 core production AI systems for ROI:\n• Autonomous AI Agents (LangGraph, CrewAI, MCP — 70% token cut)\n• End-to-End Workflow Automation (n8n Verified, Make, Zapier)\n• Context-Aware RAG Systems (Qdrant, Pinecone, Docling)\n• Predictive ML, Vision & Audio AI (PyTorch, U-Net & MAML)\n• Decision Dashboards & Cloud Serving (FastAPI, Power BI, PostgreSQL)\nBook a free 20-min call at https://cal.com/adeelsi/20min or email hello@adeelsi.me.`
 }
 
 // Cleanly formats any message into structured paragraphs, bullet points, and clickable links with zero raw ** or # symbols

@@ -103,6 +103,16 @@ const services = [
 
 const projects = [
   {
+    n: '★',
+    title: 'Wardmail — Done-For-You 24/7 AI Email Reply Agent',
+    spark: '⚡ Flagship Product · Live Inbox & Admin Panel',
+    text: 'Replies to customer emails 24/7 from your Google Sheet knowledge base on your existing inbox, and holds refunds or unknown emails for your approval.',
+    tags: ['Gmail & Outlook', 'Google Sheets', 'n8n & OpenAI'],
+    category: 'agents',
+    featured: true,
+    isWardmail: true,
+  },
+  {
     n: '01',
     title: '24/7 WhatsApp Rental & Service Booking AI Agent',
     spark: '⚡ Voice Notes + PDF Quote & Receipt',
@@ -213,11 +223,11 @@ const projects = [
 ]
 
 const projectCategories = [
-  { id: 'featured', label: 'Featured', count: 4 },
-  { id: 'agents', label: 'Autonomous Agents', count: 4 },
+  { id: 'featured', label: 'Featured', count: 5 },
+  { id: 'agents', label: 'Autonomous Agents', count: 5 },
   { id: 'rag', label: 'RAG & MCP', count: 4 },
   { id: 'ml', label: 'ML, Vision & Data', count: 4 },
-  { id: 'all', label: 'All Projects', count: 12 },
+  { id: 'all', label: 'All Systems', count: 13 },
 ]
 
 const experience = [
@@ -273,9 +283,16 @@ const chatbots = [
   },
 ]
 
-export default function Sections() {
+export default function Sections({ onNavigate }) {
   const [activeCategory, setActiveCategory] = useState('featured')
   const [copiedBot, setCopiedBot] = useState('')
+
+  const goWardmail = (e) => {
+    if (onNavigate) {
+      e.preventDefault()
+      onNavigate('/wardmail')
+    }
+  }
 
   const filteredProjects = projects.filter((p) => {
     if (activeCategory === 'featured') return p.featured
@@ -486,14 +503,78 @@ export default function Sections() {
           </div>
         </div>
 
+        {/* PRECIOUS / DOMINANT FLAGSHIP PRODUCT CARD FOR WARDMAIL */}
+        <article className="wm-flagship reveal">
+          <div className="wm-flagship__glow" aria-hidden="true" />
+          <div className="wm-flagship__main">
+            <div className="wm-flagship__badges">
+              <span className="wm-flagship__crown">
+                <span className="wm-flagship__dot" aria-hidden="true" />
+                FLAGSHIP PRODUCT · DONE-FOR-YOU SERVICE
+              </span>
+              <span className="wm-flagship__spark">⚡ 24/7 AI Email Reply Agent</span>
+            </div>
+
+            <h3 className="wm-flagship__title">
+              <a href="/wardmail" onClick={goWardmail}>
+                Wardmail — Every Customer Email Answered. Day or Night. <em>In Your Words.</em>
+              </a>
+            </h3>
+
+            <p className="wm-flagship__desc">
+              We build and set up a custom 24/7 AI email agent that connects to your existing inbox (Gmail, Outlook, Yahoo, Zoho, iCloud, or custom domain), replies using your live Google Sheet knowledge base, flags emails it can&apos;t answer instead of guessing, and logs everything in a real-time Admin Panel.
+            </p>
+
+            <ul className="wm-flagship__tags">
+              <li>Gmail · Outlook · Custom Domain</li>
+              <li>Google Sheet Knowledge Base</li>
+              <li>Zero Guessing (Flags Unknowns)</li>
+              <li>Live Admin Panel &amp; Reports</li>
+            </ul>
+          </div>
+
+          <div className="wm-flagship__actions">
+            <a
+              href="/wardmail"
+              className="btn btn--flame wm-flagship__btn-primary"
+              onClick={goWardmail}
+            >
+              Explore Wardmail
+              <span className="hero__go-dot" aria-hidden="true">
+                <ArrowRight />
+              </span>
+            </a>
+            <a
+              href="https://inboxdesk-omega.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="wm-flagship__btn-secondary"
+            >
+              <span>See Live Admin Panel</span>
+              <ArrowUpRight />
+            </a>
+          </div>
+        </article>
+
         <ul className="work-list reveal">
           {filteredProjects.map((w) => (
-            <li key={w.n} className="work-row">
+            <li
+              key={w.n}
+              className={`work-row ${w.isWardmail ? 'work-row--wardmail' : ''}`}
+            >
               <span className="work-row__num">{w.n}</span>
 
               <div className="work-row__main">
                 <div className="work-row__top">
-                  <h3 className="work-row__title">{w.title}</h3>
+                  <h3 className="work-row__title">
+                    {w.isWardmail ? (
+                      <a href="/wardmail" onClick={goWardmail}>
+                        {w.title}
+                      </a>
+                    ) : (
+                      w.title
+                    )}
+                  </h3>
                   <span className="work-row__spark">{w.spark}</span>
                 </div>
                 <p className="work-row__desc">{w.text}</p>
@@ -507,8 +588,9 @@ export default function Sections() {
                 </ul>
                 <a
                   className="work-row__link"
-                  href="#contact"
-                  aria-label={`Inquire about ${w.title}`}
+                  href={w.isWardmail ? '/wardmail' : '#contact'}
+                  onClick={w.isWardmail ? goWardmail : undefined}
+                  aria-label={w.isWardmail ? 'Explore Wardmail' : `Inquire about ${w.title}`}
                 >
                   <ArrowUpRight />
                 </a>
@@ -607,7 +689,7 @@ export default function Sections() {
         </div>
       </section>
 
-      {/* PROPER MULTI-COLUMN FOOTER WITH GITHUB & LLMS.TXT */}
+      {/* PROPER MULTI-COLUMN FOOTER WITH GITHUB, WARDMAIL & LLMS.TXT */}
       <footer className="foot">
         <div className="foot__grid">
           <div className="foot__brand">
@@ -622,6 +704,15 @@ export default function Sections() {
               <span className="srv-card__dot" aria-hidden="true" />
               Based in Lahore, Pakistan · Open to freelance &amp; global roles
             </span>
+            <a
+              href="/wardmail"
+              className="foot__wardmail-cta"
+              onClick={goWardmail}
+            >
+              <span className="wm-flagship__dot" aria-hidden="true" />
+              <span>Wardmail — 24/7 AI Email Agent</span>
+              <span aria-hidden="true">↗</span>
+            </a>
             <div className="foot__socials">
               <a
                 href={GITHUB_URL}
@@ -659,9 +750,15 @@ export default function Sections() {
           <div>
             <p className="foot__col-title">Navigation</p>
             <ul className="foot__nav">
+              <li>
+                <a href="/wardmail" onClick={goWardmail}>
+                  <span className="foot__llms-badge">Wardmail ↗</span>
+                  <span>24/7 AI Email Agent</span>
+                </a>
+              </li>
               <li><a href="#services">01 // Services</a></li>
               <li><a href="#architect">02 // Agent Architect</a></li>
-              <li><a href="#work">03 // Selected Work (12)</a></li>
+              <li><a href="#work">03 // Selected Work (13)</a></li>
               <li><a href="#experience">04 // Experience</a></li>
               <li><a href="#contact">Contact &amp; Hire</a></li>
             </ul>
@@ -729,6 +826,7 @@ export default function Sections() {
         <div className="foot__bottom">
           <span>© 2026 Muhammad Adeel (@muhammadadeelai) · Lahore, Pakistan</span>
           <div className="foot__bottom-links">
+            <a href="/wardmail" onClick={goWardmail}>Wardmail</a>
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="/llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>

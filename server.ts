@@ -27,6 +27,8 @@ Key facts about Muhammad Adeel (@muhammadadeelai):
   • GitHub: https://github.com/adeeljames
   • Medium: https://muhammadadeelai.medium.com
   • n8n Creator Hub: https://n8n.io/creators/aiadeel/
+  • Flagship Product — Wardmail (Done-for-you 24/7 AI Email Agent): https://adeelsi.me/wardmail (Live Admin Panel: https://inboxdesk-omega.vercel.app/)
+    Wardmail is a done-for-you service by Adeel (not a self-serve software platform). Adeel builds and sets up a custom 24/7 AI email reply agent for a client's business. It works with any email provider (Gmail, Outlook, custom domains, Yahoo, Zoho, iCloud), replies from the client's Google Sheet knowledge base, flags emails it cannot answer instead of guessing, and records everything in an admin panel with reports.
 
 01 // SERVICES (5 Production Systems):
 1. Autonomous AI Agents (LangGraph, CrewAI, MCP) — 24/7 agents for live web research, lead conversion, and WhatsApp voice & PDF booking (70% token cut via MCP).

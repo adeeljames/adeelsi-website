@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   padding: clamp(14px, 1.7vw, 22px) var(--gutter);
 }
 
@@ -19,6 +19,12 @@
   font-size: clamp(18px, 1.5vw, 22px);
   font-weight: 600;
   letter-spacing: -0.025em;
+}
+
+.nav__brand-tag {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--flame-lit);
 }
 
 .nav__logo { width: 1.3em; height: 1.3em; }
@@ -36,7 +42,7 @@
 .nav__pill ul {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -52,13 +58,75 @@
   font-weight: 450;
   color: rgba(255, 255, 255, 0.82);
   background: rgba(255, 255, 255, 0.05);
-  transition: background-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+  transition: background-color 0.3s var(--ease-out), color 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
 .nav__pill a:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
 
+.nav__back-link {
+  color: var(--ink-soft) !important;
+}
+
+/* Precious / Dominant Wardmail Pill inside Navbar */
+.nav__pill a.nav__wardmail {
+  border: 1px solid rgba(255, 138, 31, 0.55);
+  background: linear-gradient(96deg, rgba(255, 61, 0, 0.26), rgba(255, 138, 31, 0.18));
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(255, 61, 0, 0.25);
+}
+
+.nav__pill a.nav__wardmail:hover,
+.nav__pill a.nav__wardmail.is-active {
+  border-color: rgba(255, 165, 70, 0.85);
+  background: linear-gradient(96deg, var(--flame), var(--flame-lit));
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(255, 61, 0, 0.42);
+}
+
+.nav__wardmail-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  flex: none;
+}
+
+.nav__wardmail-badge {
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+/* Mobile & Tablet top bar Wardmail button so it is visible on every screen */
+.nav__mobile-wardmail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 138, 31, 0.58);
+  background: linear-gradient(96deg, rgba(255, 61, 0, 0.3), rgba(255, 138, 31, 0.2));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(255, 61, 0, 0.25);
+}
+
 .nav__chev { width: 10px; height: 10px; opacity: 0.7; }
 
-.nav__actions { display: flex; align-items: center; gap: 10px; }
+.nav__actions { display: flex; align-items: center; gap: 8px; }
 
 .nav__cta { font-size: 13.5px; font-weight: 550; }
 
@@ -80,25 +148,37 @@
   padding: 18px;
   border: 1px solid var(--hair);
   border-radius: 18px;
-  background: rgba(18, 5, 0, 0.94);
+  background: rgba(18, 5, 0, 0.96);
   backdrop-filter: blur(20px);
 }
-.nav__sheet ul { margin: 0 0 14px; padding: 0; list-style: none; display: grid; gap: 2px; }
+.nav__sheet ul { margin: 0 0 14px; padding: 0; list-style: none; display: grid; gap: 4px; }
 .nav__sheet a {
-  display: block;
-  padding: 12px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 12px;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 15.5px;
   color: rgba(255, 255, 255, 0.86);
 }
 .nav__sheet a:hover { background: rgba(255, 255, 255, 0.07); }
-.nav__sheet-cta { width: 100%; justify-content: center; padding: 0.85em 1.4em; }
 
-@media (min-width: 940px) {
-  .nav__pill { display: block; }
-  .nav__burger { display: none; }
+.nav__sheet a.nav__sheet-wardmail {
+  border: 1px solid rgba(255, 138, 31, 0.55);
+  background: linear-gradient(96deg, rgba(255, 61, 0, 0.26), rgba(255, 138, 31, 0.16));
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
 }
 
-@media (max-width: 480px) {
+.nav__sheet-cta { width: 100%; justify-content: center; padding: 0.85em 1.4em; }
+
+@media (min-width: 980px) {
+  .nav__pill { display: block; }
+  .nav__burger { display: none; }
+  .nav__mobile-wardmail { display: none; }
+}
+
+@media (max-width: 560px) {
   .nav__cta { display: none; }
 }
