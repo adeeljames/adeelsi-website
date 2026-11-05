@@ -14,9 +14,9 @@ import {
 import { ADEEL_PORTRAIT_B64 } from './wardmailAssets.js'
 import './WardmailPage.css'
 
-/* ============ EDIT VIDEO URL HERE WHEN READY ============ */
-const VIDEO_URL = '' // Paste a YouTube, Loom, Vimeo, or direct .mp4 URL here when uploaded
-/* ======================================================== */
+/* ============ YOUTUBE DEMO WALKTHROUGH EMBED URL ============ */
+const VIDEO_URL = 'https://www.youtube.com/embed/RK0m-dGvFsY?si=j6yN3dUefu8LL9jO'
+/* ============================================================ */
 
 const CAL_URL = 'https://cal.com/adeelsi/20min'
 const ADMIN_PANEL_URL = 'https://inboxdesk-omega.vercel.app/'
@@ -432,42 +432,6 @@ const chatbots = [
   },
 ]
 
-function parseVideoEmbed(rawUrl) {
-  if (!rawUrl || !rawUrl.trim()) return null
-  try {
-    const url = new URL(rawUrl.trim())
-    const h = url.hostname.replace(/^www\./, '')
-    if (h === 'youtube.com' || h === 'm.youtube.com') {
-      const id =
-        url.searchParams.get('v') ||
-        (url.pathname.match(/\/(?:shorts|embed|live)\/([\w-]+)/) || [])[1]
-      return id
-        ? { type: 'iframe', src: `https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=1` }
-        : null
-    }
-    if (h === 'youtu.be') {
-      return {
-        type: 'iframe',
-        src: `https://www.youtube-nocookie.com/embed/${url.pathname.slice(1)}?rel=0&autoplay=1`,
-      }
-    }
-    if (h === 'loom.com') {
-      const id = (url.pathname.match(/\/(?:share|embed)\/(\w+)/) || [])[1]
-      return id ? { type: 'iframe', src: `https://www.loom.com/embed/${id}?autoplay=1` } : null
-    }
-    if (h === 'vimeo.com') {
-      const id = (url.pathname.match(/(\d+)/) || [])[1]
-      return id ? { type: 'iframe', src: `https://player.vimeo.com/video/${id}?autoplay=1` } : null
-    }
-    if (/\.(mp4|webm|mov)(\?|$)/i.test(rawUrl)) {
-      return { type: 'video', src: rawUrl }
-    }
-    return { type: 'iframe', src: rawUrl }
-  } catch {
-    return null
-  }
-}
-
 export default function WardmailPage({ onNavigate }) {
   const replySample =
     'Hi Sara, delivery to Lahore takes 2-3 working days after dispatch. Regards, Support Team'
@@ -479,9 +443,6 @@ export default function WardmailPage({ onNavigate }) {
 
   // Minimal Google Sheet Row selector
   const [activeSheetIdx, setActiveSheetIdx] = useState(0)
-
-  // Video play state
-  const [playingVideo, setPlayingVideo] = useState(false)
 
   // Interactive Business Niche tab
   const [nicheIdx, setNicheIdx] = useState(0)
@@ -566,7 +527,6 @@ export default function WardmailPage({ onNavigate }) {
     setTimeout(() => setCopiedBot(''), 3500)
   }
 
-  const videoEmbed = parseVideoEmbed(VIDEO_URL)
   const activeNiche = businessNiches[nicheIdx]
   const activeSheet = sheetExamples[activeSheetIdx]
 
@@ -969,44 +929,17 @@ export default function WardmailPage({ onNavigate }) {
             </div>
 
             <div className="wm-vframe reveal">
-              {videoEmbed && playingVideo ? (
-                videoEmbed.type === 'video' ? (
-                  <video src={videoEmbed.src} controls autoPlay playsInline />
-                ) : (
-                  <iframe
-                    src={videoEmbed.src}
-                    title="Wardmail Demo Video"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                  />
-                )
-              ) : (
-                <div
-                  className="wm-vph"
-                  onClick={() => {
-                    if (videoEmbed) setPlayingVideo(true)
-                  }}
-                  role={videoEmbed ? 'button' : undefined}
-                  tabIndex={videoEmbed ? 0 : undefined}
-                >
-                  <div className="wm-play" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M8 5.5v13l11-6.5z" />
-                    </svg>
-                  </div>
-                  <b>
-                    {videoEmbed
-                      ? 'Watch the 4-minute walkthrough'
-                      : '4-Minute Live Walkthrough'}
-                  </b>
-                  <span className="wm-vph__sub">
-                    4-minute demo walkthrough: watch a 2 AM customer email get answered automatically while a refund request is held for one-click approval.
-                  </span>
-                  {!videoEmbed && (
-                    <span className="wm-vph__soon">4-Min Demo Walkthrough · Uploading soon</span>
-                  )}
-                </div>
-              )}
+              <iframe
+                width="560"
+                height="315"
+                src={VIDEO_URL}
+                title="Wardmail 4-Minute Demo Walkthrough — YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
+              />
             </div>
 
             {/* 5B. Clean Gradient Admin Panel Banner (No Screenshot Images) */}
