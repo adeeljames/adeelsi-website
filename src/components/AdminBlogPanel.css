@@ -705,3 +705,84 @@
     padding: 16px;
   }
 }
+
+/* ==================== ADMIN LOGIN GATE ==================== */
+.adm-auth-screen {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px var(--gutter);
+  background: radial-gradient(75% 50% at 50% 0%, rgba(255, 61, 0, 0.18), transparent 70%),
+    #0e0200;
+}
+
+.adm-auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: clamp(24px, 4vw, 36px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 138, 31, 0.4);
+  background: rgba(28, 9, 2, 0.88);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.65);
+}
+
+.adm-auth-card__eyebrow {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--flame-lit);
+  margin-bottom: 8px;
+}
+
+.adm-auth-card__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.adm-auth-card__sub {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+
+.adm-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.adm-auth-error {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.16);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #fecaca;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.adm-auth-submit {
+  width: 100%;
+  padding: 11px 16px;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.adm-auth-back {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+.adm-auth-back:hover {
+  color: #fff;
+}

@@ -78,7 +78,22 @@ function createBlankPost() {
   return autoGenerateSeoFields(initial, true)
 }
 
+const ADMIN_AUTH_SESSION_KEY = 'adeel_admin_auth_v1'
+const EXPECTED_USER = String.fromCharCode(97, 100, 101, 101, 108, 48, 49)
+const EXPECTED_PASS = String.fromCharCode(97, 100, 101, 101, 108, 53, 51, 52, 36)
+
 export default function AdminBlogPanel({ onNavigate }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    try {
+      return sessionStorage.getItem(ADMIN_AUTH_SESSION_KEY) === '1'
+    } catch {
+      return false
+    }
+  })
+  const [loginUser, setLoginUser] = useState('')
+  const [loginPass, setLoginPass] = useState('')
+  const [loginError, setLoginError] = useState('')
+
   const [posts, setPosts] = useState(() => loadBlogs())
   const [activeId, setActiveId] = useState(() => loadBlogs()[0]?.id || '')
   const [statusBanner, setStatusBanner] = useState(null)
@@ -99,6 +114,34 @@ export default function AdminBlogPanel({ onNavigate }) {
       noindex: true,
     })
   }, [])
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault()
+    if (loginUser.trim() === EXPECTED_USER && loginPass === EXPECTED_PASS) {
+      try {
+        sessionStorage.setItem(ADMIN_AUTH_SESSION_KEY, '1')
+      } catch {
+        // ignore storage errors
+      }
+      setIsAuthenticated(true)
+      setLoginPass('')
+      setLoginError('')
+    } else {
+      setLoginError('Invalid username or password.')
+    }
+  }
+
+  const handleLogout = () => {
+    try {
+      sessionStorage.removeItem(ADMIN_AUTH_SESSION_KEY)
+    } catch {
+      // ignore storage errors
+    }
+    setIsAuthenticated(false)
+    setLoginUser('')
+    setLoginPass('')
+    setLoginError('')
+  }
 
   const activePost = useMemo(() => {
     return posts.find((p) => p.id === activeId) || posts[0] || createBlankPost()
@@ -433,6 +476,68 @@ export default function AdminBlogPanel({ onNavigate }) {
     }
   }
 
+  if (!isAuthenticated) {
+    return (
+      <div className="adm-auth-screen">
+        <div className="adm-auth-card">
+          <p className="adm-auth-card__eyebrow">Protected Area</p>
+          <h1 className="adm-auth-card__title">Admin Studio Sign In</h1>
+          <p className="adm-auth-card__sub">
+            Enter your admin username and password to manage and publish SEO blog articles.
+          </p>
+
+          <form className="adm-auth-form" onSubmit={handleLoginSubmit} autoComplete="off">
+            <div className="adm-field">
+              <label htmlFor="adm-login-user">Username</label>
+              <input
+                id="adm-login-user"
+                type="text"
+                value={loginUser}
+                onChange={(e) => {
+                  setLoginUser(e.target.value)
+                  if (loginError) setLoginError('')
+                }}
+                placeholder="Enter username"
+                autoComplete="username"
+                required
+              />
+            </div>
+
+            <div className="adm-field">
+              <label htmlFor="adm-login-pass">Password</label>
+              <input
+                id="adm-login-pass"
+                type="password"
+                value={loginPass}
+                onChange={(e) => {
+                  setLoginPass(e.target.value)
+                  if (loginError) setLoginError('')
+                }}
+                placeholder="••••••••"
+                autoComplete="current-password"
+                required
+              />
+            </div>
+
+            {loginError && (
+              <div className="adm-auth-error" role="alert">
+                {loginError}
+              </div>
+            )}
+
+            <button type="submit" className="adm-btn adm-btn--magic adm-auth-submit">
+              Sign In to Admin Studio
+            </button>
+          </form>
+
+          <a href="/" className="adm-auth-back" onClick={(e) => go(e, '/')}>
+            ← Return to website
+          </a>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="adm-page">
       {/* Top Admin Studio Bar */}
@@ -476,6 +581,14 @@ export default function AdminBlogPanel({ onNavigate }) {
           >
             Preview Live Article ↗
           </a>
+
+          <button
+            type="button"
+            className="adm-btn adm-btn--ghost"
+            onClick={handleLogout}
+          >
+            Log Out
+          </button>
         </div>
       </header>
 

@@ -17,7 +17,7 @@ import './WardmailPage.css'
 import './WhatsappAgentPage.css'
 
 /* ============ PASTE YOUR YOUTUBE / LOOM / LINKEDIN EMBED URL HERE ============ */
-const VIDEO_URL = ''
+const VIDEO_URL = 'https://www.youtube.com/embed/i3ZrTtFP7fw?si=d8h360ecqdxx2MdB'
 /* ============================================================================= */
 
 const CAL_URL = 'https://cal.com/adeelsi/20min'
@@ -551,7 +551,7 @@ export default function WhatsappAgentPage({ onNavigate }) {
                 </span>
               </a>
               <a className="wm-btn-ghost" href="#demo">
-                Watch the demo
+                Watch the 3-min demo
               </a>
             </div>
 
@@ -901,35 +901,34 @@ export default function WhatsappAgentPage({ onNavigate }) {
       <section className="wm-sec" id="demo">
         <div className="wm-wrap">
           <div className="wm-dark-panel">
-            {/* 5A. Demo Video Embed / Clean 16:9 Play-Button Placeholder */}
+            {/* 5A. 3-Minute YouTube Demo Video Embed (3:16) */}
             <div className="wm-dhead">
               <div>
-                <p className="wm-eyebrow reveal">See it work (Demo in English)</p>
+                <p className="wm-eyebrow reveal">3-Minute Video Demo (3:16) · Presented in English</p>
                 <h2 className="wm-h2 reveal">
-                  Watch the <em>complete booking journey.</em>
+                  Watch the 3-minute <em>complete booking journey.</em>
                 </h2>
               </div>
               <p className="wm-lede reveal">
-                Recorded in English for universal clarity—while the agent itself speaks any customer language. Watch the customer journey, generated PDF quotation, booking receipt, owner email alert, Zero-Code Admin Panel, and live OpenTelemetry monitoring.
+                In this 3-minute walkthrough (3:16)—recorded in English for universal clarity while the agent itself speaks any customer language—watch the complete WhatsApp customer conversation, generated PDF quotation, booking receipt, owner email alert, Zero-Code Admin Panel, and live OpenTelemetry monitoring.
               </p>
             </div>
 
             <div
               className="wm-vframe reveal"
               role="region"
-              aria-label="WhatsApp Booking Agent walkthrough video"
+              aria-label="WhatsApp Booking Agent 3-minute walkthrough video"
             >
               {VIDEO_URL && VIDEO_URL.trim() ? (
                 <iframe
                   width="560"
                   height="315"
                   src={VIDEO_URL}
-                  title="WhatsApp AI Booking Agent Demo Walkthrough"
+                  title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
-                  loading="lazy"
                 />
               ) : (
                 <a
@@ -1422,7 +1421,7 @@ export default function WhatsappAgentPage({ onNavigate }) {
             <ul className="foot__nav">
               <li><a href="#workflow">Booking Workflow</a></li>
               <li><a href="#panel">Zero-Code Admin Panel</a></li>
-              <li><a href="#demo">Video Walkthrough</a></li>
+              <li><a href="#demo">3-Min Video Demo</a></li>
               <li><a href="#industries">Rentals, Cleaning &amp; Clinics</a></li>
               <li><a href="#offer">Custom Quote &amp; Training</a></li>
             </ul>
