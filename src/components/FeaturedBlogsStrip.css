@@ -1,0 +1,229 @@
+.fblog-sec {
+  padding: clamp(56px, 7vw, 96px) var(--gutter);
+  border-top: 1px solid var(--hair-soft);
+}
+
+.fblog-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fblog-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+  flex-wrap: wrap;
+}
+
+.fblog-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--flame-lit);
+  margin-bottom: 10px;
+}
+
+.fblog-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+  max-width: 18ch;
+}
+
+.fblog-title em {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--flame-lit);
+}
+
+.fblog-sub {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.fblog-head__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.fblog-all-btn {
+  font-size: 13.5px;
+  padding: 11px 18px;
+}
+
+.fblog-all-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.fblog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.fblog-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(34, 11, 3, 0.56);
+  border: 1px solid var(--hair);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.18s var(--ease-out), border-color 0.18s var(--ease-out);
+}
+
+.fblog-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 138, 31, 0.42);
+}
+
+.fblog-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #2b0c02 0%, #140400 100%);
+  overflow: hidden;
+  border-bottom: 1px solid var(--hair-soft);
+}
+
+.fblog-card__media img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.fblog-card:hover .fblog-card__media img {
+  transform: scale(1.03);
+}
+
+.fblog-card__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+.fblog-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 22px;
+}
+
+.fblog-card__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 10px;
+}
+
+.fblog-card__h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 10px;
+  text-wrap: balance;
+}
+
+.fblog-card__h3 a:hover {
+  color: var(--flame-lit);
+}
+
+.fblog-card__excerpt {
+  font-size: 13.8px;
+  line-height: 1.58;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fblog-card__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--flame-lit);
+  white-space: nowrap;
+}
+
+.fblog-card__link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.18s var(--ease-out);
+}
+
+.fblog-card:hover .fblog-card__link svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 980px) {
+  .fblog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .fblog-sec {
+    padding: 40px 16px;
+  }
+
+  .fblog-title {
+    font-size: clamp(22px, 6.2vw, 28px);
+  }
+
+  .fblog-sub {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .fblog-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .fblog-card__body {
+    padding: 16px;
+  }
+
+  .fblog-card__h3 {
+    font-size: 16px;
+  }
+
+  .fblog-card__excerpt {
+    font-size: 12.5px;
+  }
+}

@@ -17,6 +17,7 @@ import {
   N8nIcon,
   UdacityIcon,
 } from './icons.jsx'
+import FeaturedBlogsStrip from './FeaturedBlogsStrip.jsx'
 import './Sections.css'
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/muhammadadeelai/'
@@ -106,10 +107,11 @@ const projects = [
     n: '01',
     title: '24/7 WhatsApp Rental & Service Booking AI Agent',
     spark: '⚡ Voice Notes + PDF Quote & Receipt',
-    text: 'Handles voice notes, sends fleet photos, generates instant PDF quotes, and issues verified booking receipts 24/7.',
-    tags: ['FastAPI', 'LangChain', 'WhatsApp API'],
+    text: 'Multilingual WhatsApp AI agent that handles voice notes, sends fleet/service photos, checks live database dates, generates instant PDF quotes & booking receipts, and includes a Zero-Code Admin Panel.',
+    tags: ['Deepgram Voice', 'Neon PostgreSQL', 'WhatsApp API'],
     category: 'agents',
     featured: true,
+    route: '/whatsapp-agent',
   },
   {
     n: '02',
@@ -281,6 +283,13 @@ export default function Sections({ onNavigate }) {
     if (onNavigate) {
       e.preventDefault()
       onNavigate('/wardmail')
+    }
+  }
+
+  const goWhatsappAgent = (e) => {
+    if (onNavigate) {
+      e.preventDefault()
+      onNavigate('/whatsapp-agent')
     }
   }
 
@@ -493,14 +502,14 @@ export default function Sections({ onNavigate }) {
           </div>
         </div>
 
-        {/* PRECIOUS / DOMINANT FLAGSHIP PRODUCT CARD FOR WARDMAIL (SINGLE MENTION IN WORK) */}
+        {/* FLAGSHIP PRODUCT #1: WARDMAIL (24/7 AI EMAIL AGENT) */}
         <article className="wm-flagship reveal">
           <div className="wm-flagship__glow" aria-hidden="true" />
           <div className="wm-flagship__main">
             <div className="wm-flagship__badges">
               <span className="wm-flagship__crown">
                 <span className="wm-flagship__dot" aria-hidden="true" />
-                FLAGSHIP PRODUCT · DONE-FOR-YOU
+                FLAGSHIP PRODUCT 01 · DONE-FOR-YOU
               </span>
               <span className="wm-flagship__spark">⚡ 24/7 AI Email Agent</span>
             </div>
@@ -545,47 +554,112 @@ export default function Sections({ onNavigate }) {
           </div>
         </article>
 
-        <ul className="work-list reveal">
-          {filteredProjects.map((w) => (
-            <li
-              key={w.n}
-              className={`work-row ${w.isWardmail ? 'work-row--wardmail' : ''}`}
+        {/* FLAGSHIP PRODUCT #2: WHATSAPP BOOKING AGENT (RENTALS, CLEANING, PLUMBERS & CLINICS) */}
+        <article className="wm-flagship reveal" style={{ marginTop: '18px' }}>
+          <div className="wm-flagship__glow" aria-hidden="true" />
+          <div className="wm-flagship__main">
+            <div className="wm-flagship__badges">
+              <span className="wm-flagship__crown">
+                <span className="wm-flagship__dot" aria-hidden="true" />
+                FLAGSHIP PRODUCT 02 · MULTILINGUAL VOICE &amp; PDF
+              </span>
+              <span className="wm-flagship__spark">⚡ 24/7 WhatsApp Quote &amp; Booking Agent</span>
+            </div>
+
+            <h3 className="wm-flagship__title">
+              <a href="/whatsapp-agent" onClick={goWhatsappAgent}>
+                WhatsApp Booking Agent — Voice Notes, Photos, PDF Quotes &amp; Bookings <em>Handled 24/7.</em>
+              </a>
+            </h3>
+
+            <p className="wm-flagship__desc">
+              Built for Car Rentals, Cleaning Businesses, Plumbers, Clinics, and Appointment Services. Replies to voice notes &amp; text in any language, checks live database dates, sends real photos + branded PDF Quotations &amp; Booking Receipts on WhatsApp, emails the owner, and includes a Zero-Code Admin Panel.
+            </p>
+
+            <ul className="wm-flagship__tags">
+              <li>2-Way Voice Notes (Any Language)</li>
+              <li>Instant PDF Quote &amp; Receipt</li>
+              <li>Zero-Code Fleet &amp; Service Admin Panel</li>
+            </ul>
+          </div>
+
+          <div className="wm-flagship__actions">
+            <a
+              href="/whatsapp-agent"
+              className="btn btn--flame wm-flagship__btn-primary"
+              onClick={goWhatsappAgent}
             >
-              <span className="work-row__num">{w.n}</span>
+              <span>Explore WhatsApp Agent</span>
+              <span className="hero__go-dot" aria-hidden="true">
+                <ArrowRight />
+              </span>
+            </a>
+            <a
+              href="/whatsapp-agent#panel"
+              className="wm-flagship__btn-secondary"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault()
+                  onNavigate('/whatsapp-agent', '#panel')
+                }
+              }}
+            >
+              <span>Zero-Code Admin Panel</span>
+              <ArrowUpRight />
+            </a>
+          </div>
+        </article>
 
-              <div className="work-row__main">
-                <div className="work-row__top">
-                  <h3 className="work-row__title">
-                    {w.isWardmail ? (
-                      <a href="/wardmail" onClick={goWardmail}>
-                        {w.title}
-                      </a>
-                    ) : (
-                      w.title
-                    )}
-                  </h3>
-                  <span className="work-row__spark">{w.spark}</span>
+        <ul className="work-list reveal">
+          {filteredProjects.map((w) => {
+            const targetRoute = w.route || (w.isWardmail ? '/wardmail' : '')
+            const handleRowClick = (e) => {
+              if (targetRoute && onNavigate) {
+                e.preventDefault()
+                onNavigate(targetRoute)
+              }
+            }
+            return (
+              <li
+                key={w.n}
+                className={`work-row ${targetRoute ? 'work-row--wardmail' : ''}`}
+              >
+                <span className="work-row__num">{w.n}</span>
+
+                <div className="work-row__main">
+                  <div className="work-row__top">
+                    <h3 className="work-row__title">
+                      {targetRoute ? (
+                        <a href={targetRoute} onClick={handleRowClick}>
+                          {w.title}
+                        </a>
+                      ) : (
+                        w.title
+                      )}
+                    </h3>
+                    <span className="work-row__spark">{w.spark}</span>
+                  </div>
+                  <p className="work-row__desc">{w.text}</p>
                 </div>
-                <p className="work-row__desc">{w.text}</p>
-              </div>
 
-              <div className="work-row__meta">
-                <ul className="work-row__tags">
-                  {w.tags.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-                <a
-                  className="work-row__link"
-                  href={w.isWardmail ? '/wardmail' : '#contact'}
-                  onClick={w.isWardmail ? goWardmail : undefined}
-                  aria-label={w.isWardmail ? 'Explore Wardmail' : `Inquire about ${w.title}`}
-                >
-                  <ArrowUpRight />
-                </a>
-              </div>
-            </li>
-          ))}
+                <div className="work-row__meta">
+                  <ul className="work-row__tags">
+                    {w.tags.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                  <a
+                    className="work-row__link"
+                    href={targetRoute || '#contact'}
+                    onClick={targetRoute ? handleRowClick : undefined}
+                    aria-label={targetRoute ? `Explore ${w.title}` : `Inquire about ${w.title}`}
+                  >
+                    <ArrowUpRight />
+                  </a>
+                </div>
+              </li>
+            )
+          })}
         </ul>
       </section>
 
@@ -619,6 +693,9 @@ export default function Sections({ onNavigate }) {
           ))}
         </ul>
       </section>
+
+      {/* FEATURED BLOG ARTICLES & SEO GUIDES */}
+      <FeaturedBlogsStrip variant="portfolio" onNavigate={onNavigate} />
 
       {/* CONTACT + ASK ABOUT ME WITH YOUR FAVOURITE CHATBOT */}
       <section className="sec sec--contact" id="contact">
@@ -742,13 +819,32 @@ export default function Sections({ onNavigate }) {
               <li>
                 <a href="/wardmail" onClick={goWardmail}>
                   <span className="foot__llms-badge">Wardmail ↗</span>
-                  <span>24/7 AI Email Agent</span>
+                  <span>24/7 Email Agent</span>
+                </a>
+              </li>
+              <li>
+                <a href="/whatsapp-agent" onClick={goWhatsappAgent}>
+                  <span className="foot__llms-badge">WhatsApp AI ↗</span>
+                  <span>24/7 Booking Agent</span>
                 </a>
               </li>
               <li><a href="#services">01 // Services</a></li>
               <li><a href="#architect">02 // Agent Architect</a></li>
               <li><a href="#work">03 // Selected Work (13)</a></li>
               <li><a href="#experience">04 // Experience</a></li>
+              <li>
+                <a
+                  href="/blog"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault()
+                      onNavigate('/blog')
+                    }
+                  }}
+                >
+                  05 // Blog &amp; SEO Guides
+                </a>
+              </li>
               <li><a href="#contact">Contact &amp; Hire</a></li>
             </ul>
           </div>
@@ -816,6 +912,18 @@ export default function Sections({ onNavigate }) {
           <span>© 2026 Muhammad Adeel (@muhammadadeelai) · Lahore, Pakistan</span>
           <div className="foot__bottom-links">
             <a href="/wardmail" onClick={goWardmail}>Wardmail</a>
+            <a href="/whatsapp-agent" onClick={goWhatsappAgent}>WhatsApp Agent</a>
+            <a
+              href="/blog"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault()
+                  onNavigate('/blog')
+                }
+              }}
+            >
+              Blog
+            </a>
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="/llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>

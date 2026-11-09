@@ -12,6 +12,7 @@ import {
   N8nIcon,
 } from './icons.jsx'
 import { ADEEL_PORTRAIT_B64 } from './wardmailAssets.js'
+import FeaturedBlogsStrip from './FeaturedBlogsStrip.jsx'
 import './WardmailPage.css'
 
 /* ============ YOUTUBE DEMO WALKTHROUGH EMBED URL ============ */
@@ -1279,6 +1280,9 @@ export default function WardmailPage({ onNavigate }) {
         </div>
       </section>
 
+      {/* ================= FEATURED WARDMAIL & AI AUTOMATION BLOG ARTICLES ================= */}
+      <FeaturedBlogsStrip variant="wardmail" onNavigate={onNavigate} />
+
       {/* ================= 11. VISIBLE LLM BLOCK ================= */}
       <section className="wm-llm-block" aria-label="For AI assistants">
         <div className="wm-wrap">
@@ -1371,7 +1375,21 @@ export default function WardmailPage({ onNavigate }) {
                   }}
                 >
                   <span className="foot__llms-badge">Wardmail</span>
-                  <span>24/7 AI Email Agent</span>
+                  <span>24/7 Email Agent</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/whatsapp-agent"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault()
+                      onNavigate('/whatsapp-agent')
+                    }
+                  }}
+                >
+                  <span className="foot__llms-badge">WhatsApp AI ↗</span>
+                  <span>24/7 Booking Agent</span>
                 </a>
               </li>
               <li>
@@ -1454,6 +1472,17 @@ export default function WardmailPage({ onNavigate }) {
           <span>© 2026 Muhammad Adeel (@muhammadadeelai) · Wardmail Done-For-You AI Email Agent</span>
           <div className="foot__bottom-links">
             <a href="/" onClick={(e) => goPortfolio(e)}>Main Portfolio</a>
+            <a
+              href="/blog"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault()
+                  onNavigate('/blog')
+                }
+              }}
+            >
+              Blog
+            </a>
             <a href={ADMIN_PANEL_URL} target="_blank" rel="noopener noreferrer">Live Admin Panel</a>
             <a href="/llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>
             <a

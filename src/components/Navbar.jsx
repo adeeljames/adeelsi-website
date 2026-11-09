@@ -4,9 +4,9 @@ import './Navbar.css'
 
 const portfolioLinks = [
   { label: 'Services', href: '#services' },
-  { label: 'Architect', href: '#architect' },
   { label: 'Work', href: '#work' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'WhatsApp AI', href: '/whatsapp-agent', isRoute: true },
+  { label: 'Blog', href: '/blog', isRoute: true },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -14,11 +14,26 @@ const wardmailLinks = [
   { label: 'How it works', href: '#how' },
   { label: 'Google Sheet', href: '#sheet' },
   { label: 'Demo & Panel', href: '#demo' },
-  { label: 'Pricing & Training', href: '#offer' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Pricing', href: '#offer' },
+  { label: 'WhatsApp AI', href: '/whatsapp-agent', isRoute: true },
+  { label: 'Blog', href: '/blog', isRoute: true },
 ]
 
-export default function Navbar({ isWardmail = false, onNavigate }) {
+const whatsappLinks = [
+  { label: 'Workflow', href: '#workflow' },
+  { label: 'Admin Panel', href: '#panel' },
+  { label: 'Demo', href: '#demo' },
+  { label: 'Industries', href: '#industries' },
+  { label: 'Pricing', href: '#offer' },
+  { label: 'Blog', href: '/blog', isRoute: true },
+]
+
+export default function Navbar({
+  isWardmail = false,
+  isWhatsappAgent = false,
+  isBlog = false,
+  onNavigate,
+}) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -33,29 +48,42 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       return
     }
+    if (path === '/whatsapp-agent' && isWhatsappAgent) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
     if (onNavigate) {
       e.preventDefault()
       onNavigate(path, hash)
     }
   }
 
-  const activeLinks = isWardmail ? wardmailLinks : portfolioLinks
+  const activeLinks = isWhatsappAgent
+    ? whatsappLinks
+    : isWardmail
+    ? wardmailLinks
+    : portfolioLinks
+
+  const isSubpage = isWardmail || isWhatsappAgent || isBlog
 
   return (
     <header className="nav">
       <a
         className="nav__brand"
-        href={isWardmail ? '/' : '#main'}
-        onClick={(e) => (isWardmail ? goRoute(e, '/') : undefined)}
+        href={isSubpage ? '/' : '#main'}
+        onClick={(e) => (isSubpage ? goRoute(e, '/') : undefined)}
       >
         <Logo className="nav__logo" />
         <span>Adeel</span>
         {isWardmail && <span className="nav__brand-tag">/ Wardmail</span>}
+        {isWhatsappAgent && <span className="nav__brand-tag">/ WhatsApp AI</span>}
+        {isBlog && <span className="nav__brand-tag">/ Blog</span>}
       </a>
 
       <nav className="nav__pill" aria-label="Primary">
         <ul>
-          {isWardmail && (
+          {isSubpage && (
             <li>
               <a
                 href="/"
@@ -69,7 +97,21 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
 
           {activeLinks.map((link) => (
             <li key={link.label}>
-              <a href={link.href}>{link.label}</a>
+              {link.isRoute ? (
+                <a
+                  href={link.href}
+                  onClick={(e) => goRoute(e, link.href)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <a
+                  href={isBlog ? `/${link.href}` : link.href}
+                  onClick={(e) => (isBlog ? goRoute(e, '/', link.href) : undefined)}
+                >
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
 
@@ -88,17 +130,17 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
       </nav>
 
       <div className="nav__actions">
-        {/* Always-visible Wardmail quick pill on mobile/tablet where .nav__pill is hidden */}
+        {/* Always-visible quick pill on mobile/tablet where .nav__pill is hidden */}
         <a
-          href={isWardmail ? '/' : '/wardmail'}
-          className={`nav__mobile-wardmail ${isWardmail ? 'is-active' : ''}`}
-          onClick={(e) => goRoute(e, isWardmail ? '/' : '/wardmail')}
+          href={isWardmail || isWhatsappAgent ? '/' : '/wardmail'}
+          className={`nav__mobile-wardmail ${isWardmail || isWhatsappAgent ? 'is-active' : ''}`}
+          onClick={(e) => goRoute(e, isWardmail || isWhatsappAgent ? '/' : '/wardmail')}
         >
           <span className="nav__wardmail-dot" aria-hidden="true" />
-          <span>{isWardmail ? '← Portfolio' : 'Wardmail'}</span>
+          <span>{isWardmail || isWhatsappAgent ? '← Portfolio' : 'Wardmail'}</span>
         </a>
 
-        {isWardmail ? (
+        {isWardmail || isWhatsappAgent ? (
           <a
             className="btn btn--light nav__cta"
             href="https://cal.com/adeelsi/20min"
@@ -108,7 +150,13 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
             Book 20-Min Call
           </a>
         ) : (
-          <a className="btn btn--light nav__cta" href="#contact">Hire me</a>
+          <a
+            className="btn btn--light nav__cta"
+            href={isBlog ? '/#contact' : '#contact'}
+            onClick={(e) => (isBlog ? goRoute(e, '/', '#contact') : undefined)}
+          >
+            Hire me
+          </a>
         )}
         <button
           className="nav__burger"
@@ -132,10 +180,21 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
               >
                 <span className="nav__wardmail-dot" aria-hidden="true" />
                 <span>Wardmail — 24/7 AI Email Agent</span>
+                <span className="nav__wardmail-badge">PRODUCT</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/whatsapp-agent"
+                className="nav__sheet-wardmail"
+                onClick={(e) => goRoute(e, '/whatsapp-agent')}
+              >
+                <span className="nav__wardmail-dot" aria-hidden="true" />
+                <span>WhatsApp AI — 24/7 Quote &amp; Booking Agent</span>
                 <span className="nav__wardmail-badge">NEW</span>
               </a>
             </li>
-            {isWardmail && (
+            {isSubpage && (
               <li>
                 <a href="/" onClick={(e) => goRoute(e, '/')}>
                   ← Back to Main Portfolio
@@ -144,11 +203,28 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
             )}
             {activeLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} onClick={() => setOpen(false)}>{link.label}</a>
+                {link.isRoute ? (
+                  <a href={link.href} onClick={(e) => goRoute(e, link.href)}>
+                    {link.label}
+                  </a>
+                ) : (
+                  <a
+                    href={isBlog ? `/${link.href}` : link.href}
+                    onClick={(e) => {
+                      if (isBlog) {
+                        goRoute(e, '/', link.href)
+                      } else {
+                        setOpen(false)
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
-          {isWardmail ? (
+          {isWardmail || isWhatsappAgent ? (
             <a
               className="btn btn--flame nav__sheet-cta"
               href="https://cal.com/adeelsi/20min"
@@ -159,7 +235,17 @@ export default function Navbar({ isWardmail = false, onNavigate }) {
               Book a Free 20-Min Call
             </a>
           ) : (
-            <a className="btn btn--flame nav__sheet-cta" href="#contact" onClick={() => setOpen(false)}>
+            <a
+              className="btn btn--flame nav__sheet-cta"
+              href={isBlog ? '/#contact' : '#contact'}
+              onClick={(e) => {
+                if (isBlog) {
+                  goRoute(e, '/', '#contact')
+                } else {
+                  setOpen(false)
+                }
+              }}
+            >
               Hire me
             </a>
           )}
